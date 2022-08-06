@@ -1,0 +1,15 @@
+{
+  "ItemMaterial": "JSON",
+  "ItemName": "JSON",
+  "ItemLore": [
+    {
+      "0": "Lore"
+    },
+    {
+      "1": "lore 2!"
+    },
+    {
+      "1": "lore 2!"
+    }
+  ]
+}
