@@ -7,7 +7,7 @@ import util.SpriteSheet;
 
 import java.awt.image.BufferedImage;
 
-public class OBJ_Heart extends Entity {
+public class OBJ_Heart extends entity.object.Object {
 	public OBJ_Heart(GamePanel gp) {
 		setName("Heart");
 		BufferedImage ImageSheet = null;
