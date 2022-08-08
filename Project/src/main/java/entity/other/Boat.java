@@ -18,6 +18,7 @@ public class Boat extends Entity {
 	ImageUtility skinSystem;
 
 	public Boat(GamePanel gp, Entity entity) {
+		super(gp);
 		skinSystem = new ImageUtility(gp);
 		this.gp  = gp;
 		this.entity = entity;
