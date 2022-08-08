@@ -1,4 +1,4 @@
-package events.events;
+package events.events.playerevent;
 
 import entity.livingentity.humanentity.player.Player;
 import events.event.Event;
