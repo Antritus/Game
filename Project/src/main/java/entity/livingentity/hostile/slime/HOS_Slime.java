@@ -9,6 +9,7 @@ import java.awt.*;
 public class HOS_Slime extends SlimeAI {
 	ImageUtility imageUtility;
 	public HOS_Slime(GamePanel gp) {
+		super(gp);
 		this.gp = gp;
 		imageUtility = new ImageUtility(gp);
 		this.setName("Slime");
