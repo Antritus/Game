@@ -19,23 +19,6 @@ import java.util.UUID;
 
 public class GamePanel extends JPanel implements Runnable {
 
-	// Settings
-	final int originalTileSize = 16; // 16x16
-	public final int scale = 4;
-
-	public int tileSize = originalTileSize * scale; // 48x48
-	public int  maxScreenCol = 16;
-	public int maxScreenRow = 12;
-	public int screenWidth = tileSize *  maxScreenCol;//768
-	public int screenHeight = tileSize * maxScreenRow;//576
-	// world settings
-	public final int maxWorldCol = 50;
-	public final int maxWorldRow = 50;
-
-	private boolean isDebuggingOn = false;
-
-	// App name
-	private final String name;
 
 	// Fps (Movement update)
 	int FPS = 60;
@@ -46,6 +29,11 @@ public class GamePanel extends JPanel implements Runnable {
 	Sound music = new Sound();
 	Sound soundEffect = new Sound();
 	private Thread gameThread;
+
+	private final DefaultSettings defaultSettings = new DefaultSettings();
+	public DefaultSettings getDefaultSettings(){
+		return defaultSettings;
+	}
 
 	private final CollisionChecker checker;
 	private final AssetSetter assetSetter;
@@ -151,7 +139,7 @@ public class GamePanel extends JPanel implements Runnable {
 		debug = new Debug(this);
 
 
-		this.setPreferredSize(new Dimension(screenWidth, screenHeight));
+		this.setPreferredSize(new Dimension(getDefaultSettings().screenWidth, getDefaultSettings().screenHeight));
 		this.setBackground(Color.black);
 		this.setDoubleBuffered(true);
 		this.addKeyListener(keyHandler);
@@ -179,15 +167,15 @@ public class GamePanel extends JPanel implements Runnable {
 
 	 */
 	public void startDebugging() {
-		this.isDebuggingOn = true;
-		Main.updateName(name + " (Currently Debugging)");
+		this.getDefaultSettings().setDebugging(true);
+		Main.updateName(getDefaultSettings().getName() + " (Currently Debugging)");
 	}
 	public void stopDebugging() {
-		this.isDebuggingOn = false;
-		Main.updateName(name);
+		getDefaultSettings().setDebugging(false);
+		Main.updateName(getDefaultSettings().getName());
 	}
 	public boolean isDebuggingOn() {
-		return this.isDebuggingOn;
+		return this.getDefaultSettings().isDebuggingOn();
 	}
 	public void startFrameThread() {
 		gameThread = new Thread(this);
@@ -263,7 +251,7 @@ public class GamePanel extends JPanel implements Runnable {
 		Graphics2D g2 = (Graphics2D) g;
 
 		//Debugging
-		if (isDebuggingOn) {
+		if (getDefaultSettings().isDebuggingOn()) {
 			drawStart = System.nanoTime();
 		}
 		if (!allowPainting) {
@@ -311,7 +299,7 @@ public class GamePanel extends JPanel implements Runnable {
 			ui.draw(g2);
 		}
 		// Debugging
-		if (isDebuggingOn) {
+		if (this.isDebuggingOn()) {
 			long drawEnd = System.nanoTime();
 			drawTime = drawEnd - drawStart;
 			debug.drawDebug(g2);
