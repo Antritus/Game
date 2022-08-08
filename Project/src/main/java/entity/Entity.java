@@ -14,8 +14,11 @@ import java.util.UUID;
 public class Entity {
 	private int tick = 0;
 	private void tick() {}
-
-
+	GamePanel gp;
+	
+	public Entity(GamePanel gp) {
+		this.gp = gp;
+	}
 
 
 
