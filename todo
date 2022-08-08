@@ -1,0 +1,23 @@
+getDefaultSettings() requires fix at:
+ - HostileEntity
+ - Knight (class)
+ - TimeWarp (class)
+ - Player
+ - HumanEntity
+ - Object
+ - Boat
+ - TileManager
+ - GameUI
+ - MainMenu
+ - MouseCursorLocation
+ - PauseMenu
+ - SettingsMenu
+ - SkinMenu
+ - ButtonInfo
+ - Menu
+ - UISystem
+ - AssetSetter
+ - CollisionChecker
+ - GamePanel
+ - ImageGallery
+ - ImageUtility
