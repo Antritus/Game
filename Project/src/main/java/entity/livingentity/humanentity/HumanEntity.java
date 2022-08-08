@@ -13,6 +13,7 @@ import java.util.UUID;
 
 // todo: move draw methods to entity class
 
+
 public abstract class HumanEntity extends LivingEntity {
 	GamePanel gp;
 	ImageUtility skinSystem;
