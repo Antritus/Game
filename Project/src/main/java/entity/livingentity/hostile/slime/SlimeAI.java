@@ -12,7 +12,11 @@ import java.util.Random;
 
 public class SlimeAI extends HostileEntity {
 	public GamePanel gp;
-
+	
+	public SlimeAI(GamePanel gp) {
+		super(gp);
+		this.gp = gp;
+	}
 
 	public void setAction() {
 		setActionLockTime(getActionLockTime() + 1);
