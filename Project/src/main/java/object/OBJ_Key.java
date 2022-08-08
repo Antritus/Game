@@ -5,7 +5,7 @@ import entity.Entity;
 import javax.imageio.ImageIO;
 import java.io.IOException;
 
-public class OBJ_Key extends Entity {
+public class OBJ_Key extends entity.object.Object {
 	public OBJ_Key() {
 		setName("Key");
 		try {
