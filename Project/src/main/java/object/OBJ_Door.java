@@ -5,7 +5,7 @@ import entity.Entity;
 import javax.imageio.ImageIO;
 import java.io.IOException;
 
-public class OBJ_Door extends Entity {
+public class OBJ_Door extends entity.object.Object {
 	public OBJ_Door() {
 		setName("Door");
 		try {
