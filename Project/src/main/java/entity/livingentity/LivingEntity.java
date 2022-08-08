@@ -34,6 +34,11 @@ public abstract class LivingEntity extends Entity {
 	private DamageCause lastDamageCause;
 	private Damage lastDamage;
 	private LivingEntity lastAttacker;
+	
+	public LivingEntity(GamePanel gp) {
+		super(gp);
+		this.gp = gp;
+	}
 
 
 	public double getHealthPercentage() {
