@@ -11,6 +11,8 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.UUID;
 
+// todo: move draw methods to entity class
+
 public abstract class HumanEntity extends LivingEntity {
 	GamePanel gp;
 	ImageUtility skinSystem;
@@ -21,6 +23,7 @@ public abstract class HumanEntity extends LivingEntity {
 	private String currentDialog;
 
 	public HumanEntity(GamePanel gp){
+		super(gp);
 		this.skinSystem = new ImageUtility(gp);
 		this.gp = gp;
 	}
