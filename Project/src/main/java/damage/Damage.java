@@ -1,5 +1,7 @@
 package damage;
 
+import entity.livingentity.LivingEntity;
+
 public class Damage {
 	private final double trueDamage;
 	private final DamageElement element;
@@ -11,11 +13,27 @@ public class Damage {
 
 	private boolean damageTrue;
 
-	public Damage(double trueDamage, DamageElement element, DamageCause cause) {
+	private final LivingEntity entity;
+
+	public Damage(double trueDamage, DamageElement element, DamageCause cause, boolean dealTrueDamage) {
 		this.trueDamage = trueDamage;
 		this.damage = trueDamage;
 		this.element = element;
 		this.cause = cause;
+		this.level = -999;
+		this.levelBoost = -999;
+		this.damageTrue = dealTrueDamage;
+		this.entity = null;
+	}
+	public Damage(LivingEntity entity, double trueDamage, DamageElement element, DamageCause cause, int level, double levelBoost, boolean damageTrue) {
+		this.trueDamage = trueDamage;
+		this.damage = trueDamage;
+		this.element = element;
+		this.cause = cause;
+		this.level = level;
+		this.levelBoost = levelBoost;
+		this.damageTrue = damageTrue;
+		this.entity = entity;
 	}
 	public Damage(double trueDamage, DamageElement element, DamageCause cause, int level, double levelBoost, boolean damageTrue) {
 		this.trueDamage = trueDamage;
@@ -25,7 +43,9 @@ public class Damage {
 		this.level = level;
 		this.levelBoost = levelBoost;
 		this.damageTrue = damageTrue;
+		this.entity = null;
 	}
+
 	public boolean isDamageTrue() {
 		return damageTrue;
 	}
@@ -84,4 +104,7 @@ public class Damage {
 	}
 
 
+	public LivingEntity getEntity() {
+		return entity;
+	}
 }

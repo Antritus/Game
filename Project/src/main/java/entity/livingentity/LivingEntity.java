@@ -178,7 +178,7 @@ public abstract class LivingEntity extends Entity {
 			}
 		}
 		livingEntity.receiveDamage(this, new Damage(
-				damage, element, cause), trueDamage);
+				damage, element, cause, this.level, 0, false), trueDamage);
 	}
 	public void attack(LivingEntity livingEntity, double damage, DamageElement element){
 		attack(livingEntity, damage, element, false);

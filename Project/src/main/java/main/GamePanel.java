@@ -5,7 +5,7 @@ import entity.livingentity.hostile.HostileEntity;
 import entity.livingentity.humanentity.HumanEntity;
 import entity.livingentity.humanentity.player.Player;
 import entity.livingentity.humanentity.player.character.classes.knight.Knight;
-import eventtodo.EventHandler;
+import entity.object.Object;
 import main.settings.ControlSettings;
 import main.ui.UISystem;
 import main.tile.TileManager;
@@ -51,13 +51,11 @@ public class GamePanel extends JPanel implements Runnable {
 	private final AssetSetter assetSetter;
 	private final UISystem ui;
 	private final KeyHandler keyHandler;
-	private final EventHandler eventHandler;
 	private final ControlSettings controlSettings;
 	private final ImageUtility imageUtility;
 	private final Debug debug;
 	//private final ImageGallery imageGallery;
 	public Thread getGameThread(){return gameThread;}
-	public EventHandler getEventHandler(){return eventHandler;}
 	public ControlSettings getControlSettings(){return controlSettings;}
 	public ImageUtility getImageUtility(){return imageUtility;}
 //	public ImageGallery getImageGallery(){return imageGallery;}
@@ -141,7 +139,6 @@ public class GamePanel extends JPanel implements Runnable {
 		imageUtility = new ImageUtility(this);
 //		imageGallery = new ImageGallery(this, imageUtility);
 		controlSettings = new ControlSettings(this);
-		eventHandler = new EventHandler(this);
 		keyHandler = new KeyHandler(this);
 		ui = new UISystem(this);
 		assetSetter = new AssetSetter(this);
@@ -300,7 +297,8 @@ public class GamePanel extends JPanel implements Runnable {
 				}
 			});
 			for (Entity entity : entityArrayList) {
-				entity.draw(g2, this);
+				//todo: fix drawing
+//				entity.draw(g2, this);
 			}
 			entityArrayList.clear();
 
