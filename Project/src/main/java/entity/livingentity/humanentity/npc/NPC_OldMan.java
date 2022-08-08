@@ -72,7 +72,7 @@ public class NPC_OldMan extends HumanEntity {
 		} else {
 			gp.getUISystem().setCurrentDialog(this.getDialog(getCurrentDialogIndex()));
 			this.setCurrentDialogIndex(1 + this.getCurrentDialogIndex());
-			this.setDirection(this.getOppositeDirection(this.getPlayer(this.getUUIDOfPlayer()).getDirection()));
+			this.setDirection(this.getOppositeDirection(getEntity(this.getUUIDOfPlayer()).getDirection()));
 		}
 	}
 

@@ -108,6 +108,15 @@ public class Entity {
 		return name;
 	}
 
+	public Entity getEntity(UUID uuid) {
+		for (Entity entity : gp.getEntities()){
+			if (entity.getUUID() == uuid){
+				return entity;
+			}
+		}
+		return null;
+	}
+
 	/*
 	 * Boat Riding
 	 */
