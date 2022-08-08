@@ -6,7 +6,7 @@ import main.GamePanel;
 import javax.imageio.ImageIO;
 import java.io.IOException;
 
-public class OBJ_Chest extends entity.object.object.Object {
+public class OBJ_Chest extends entity.object.Object {
 	public OBJ_Chest(GamePanel gp) {
 		super(gp);
 		setName("Chest");

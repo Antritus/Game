@@ -1,6 +1,7 @@
 package main.ui.menu;
 
 import entity.Entity;
+import entity.object.Object;
 import main.GamePanel;
 import object.OBJ_Heart;
 import util.ImageUtility;
@@ -32,7 +33,7 @@ public class GameUI {
 
 
 	public void getImage() {
-			entity.object.object.Object heart = new OBJ_Heart(gp);
+			OBJ_Heart heart = new OBJ_Heart(gp);
 			redHeartImage100 = heart.getObjectImage();
 			redHeartImage80 = heart.getObjectImage2();
 			redHeartImage60 = heart.getObjectImage3();
