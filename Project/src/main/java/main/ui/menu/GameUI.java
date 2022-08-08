@@ -32,7 +32,7 @@ public class GameUI {
 
 
 	public void getImage() {
-			Entity heart = new OBJ_Heart(gp);
+			entity.object.Object heart = new OBJ_Heart(gp);
 			redHeartImage100 = heart.getObjectImage();
 			redHeartImage80 = heart.getObjectImage2();
 			redHeartImage60 = heart.getObjectImage3();
