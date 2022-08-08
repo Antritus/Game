@@ -12,7 +12,11 @@ import java.awt.image.BufferedImage;
 public class HostileEntity extends LivingEntity {
 	GamePanel gp;
 	private int actionLockTime = 0;
-
+	
+	public HostileEntity(GamePanel gp) {
+		super(gp);
+		this.gp = gp;
+	}
 	public void setAction() {
 	}
 
