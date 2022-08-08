@@ -1,14 +1,14 @@
 package object;
 
-import entity.Entity;
 import main.GamePanel;
 import util.ImageUtility;
 import util.SpriteSheet;
 
 import java.awt.image.BufferedImage;
 
-public class OBJ_Heart extends entity.object.Object {
+public class OBJ_Heart extends entity.object.object.Object {
 	public OBJ_Heart(GamePanel gp) {
+		super(gp);
 		setName("Heart");
 		BufferedImage ImageSheet = null;
 		ImageUtility imageUtility = new ImageUtility(gp);

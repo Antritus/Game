@@ -14,7 +14,13 @@ public class Character {
 	// todo: characters
 
 
-	public Character(CharacterType characterType, CharacterAbility characterAbility, CharacterPassivePerk characterPassivePerk, String characterDescription, String characterName, String characterClassName, BufferedImage classIcon) {
+	public Character(CharacterType characterType,
+					 CharacterAbility characterAbility,
+					 CharacterPassivePerk characterPassivePerk,
+					 String characterDescription,
+					 String characterName,
+					 String characterClassName,
+					 BufferedImage classIcon) {
 		this.characterType = characterType;
 		this.characterAbility = characterAbility;
 		this.characterPassivePerk = characterPassivePerk;

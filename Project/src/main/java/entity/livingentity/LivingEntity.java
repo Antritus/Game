@@ -6,6 +6,7 @@ import damage.DamageElement;
 import entity.Entity;
 import entity.EntityType;
 import main.Direction;
+import main.GamePanel;
 import org.jetbrains.annotations.NotNull;
 import main.tile.Tile;
 
@@ -34,6 +35,8 @@ public abstract class LivingEntity extends Entity {
 	private DamageCause lastDamageCause;
 	private Damage lastDamage;
 	private LivingEntity lastAttacker;
+
+	private GamePanel gp;
 	
 	public LivingEntity(GamePanel gp) {
 		super(gp);

@@ -1,12 +1,18 @@
-package entity.object.object;
+package entity.object;
 
-public class Object extends Entity{
+import entity.Entity;
+import main.GamePanel;
+
+import java.awt.*;
+import java.awt.image.BufferedImage;
+
+public class Object extends Entity {
   GamePanel gp;
   public Object(GamePanel gp) {
     super(gp);
     this.gp = gp;
   }
-	private BufferedImage  image, image2, image3, image4, image5, image6;
+	private BufferedImage image, image2, image3, image4, image5, image6;
 
 
 	public BufferedImage getObjectImage() {return image;}

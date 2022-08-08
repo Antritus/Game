@@ -9,7 +9,7 @@ import util.ImageUtility;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public class HostileEntity extends LivingEntity {
+public abstract class HostileEntity extends LivingEntity {
 	GamePanel gp;
 	private int actionLockTime = 0;
 	
