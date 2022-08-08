@@ -68,6 +68,11 @@ public class GamePanel extends JPanel implements Runnable {
 	public Account account = new Account("Antritus", 123, UUID.randomUUID());
 
 
+	private Entity[] entities = new Entity[1000];
+
+	public Entity[] getEntities(){
+		return entities;
+	}
 
 	public Player player;
 	public static Player staticPlayer;
