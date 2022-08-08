@@ -8,7 +8,7 @@ public class EntityEvent {
     public EntityEvent(final LivingEntity eventPlayer) {
     }
 
-    public final LivingEntity getPlayer() {
+    public final LivingEntity getEntity() {
         return entity;
     }
 }
