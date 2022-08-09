@@ -1,0 +1,42 @@
+Info:
+ - # = done
+ - @ = in progress
+ - ! = urgent
+ - % = not so urgent but required
+ - & = known issue
+ - $ = idea
+ - // = comment
+
+(!) (@) getDefaultSettings() requires fix at:
+ - HostileEntity
+ - Knight (class)
+ - TimeWarp (class)
+ - Player
+ - HumanEntity
+ - Object
+ - Boat
+ - TileManager
+ - GameUI
+ - MainMenu
+ - MouseCursorLocation
+ - PauseMenu
+ - SettingsMenu
+ - SkinMenu
+ - ButtonInfo
+ - Menu
+ - UISystem
+ - AssetSetter
+ - CollisionChecker
+ - GamePanel
+ - ImageGallery
+ - ImageUtility
+
+
+(%) (@) Add Events
+
+
+(@) (%) (Add server networking ( not hosted by AC ) // Not required
+// change engine to multiplayer engine to make it easier to work on multiplayer
+
+
+
