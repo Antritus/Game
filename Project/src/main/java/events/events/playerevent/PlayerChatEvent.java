@@ -11,6 +11,4 @@ public class PlayerChatEvent extends PlayerEvent {
         this.realMessage = realMessage;
         this.message = realMessage;
     }
-
-
 }

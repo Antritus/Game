@@ -5,8 +5,8 @@ import main.Location;
 
 public class EntityMovementEvent extends EntityEvent{
     private Location newLocation, oldLocation;
-    public EntityMovementEvent(LivingEntity eventPlayer, final Location oldLocation, final Location newLocation) {
-        super(eventPlayer);
+    public EntityMovementEvent(LivingEntity entity, final Location oldLocation, final Location newLocation) {
+        super(entity);
         this.newLocation = newLocation;
         this.oldLocation = oldLocation;
     }
