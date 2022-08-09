@@ -25,18 +25,18 @@ public class GamePanel extends JPanel implements Runnable {
 	// game time
 	public double playTime = 0;
 
-	TileManager tileM = new TileManager(this);
+	TileManager tileM;
 	Sound music = new Sound();
 	Sound soundEffect = new Sound();
 	private Thread gameThread;
 
-	private final DefaultSettings defaultSettings = new DefaultSettings();
+	private final DefaultSettings defaultSettings;
 	public DefaultSettings getDefaultSettings(){
 		return defaultSettings;
 	}
 
-	private final CollisionChecker checker;
-	private final AssetSetter assetSetter;
+	private CollisionChecker checker;
+	private AssetSetter assetSetter;
 	private final UISystem ui;
 	private final KeyHandler keyHandler;
 	private final ControlSettings controlSettings;
@@ -53,7 +53,7 @@ public class GamePanel extends JPanel implements Runnable {
 	public KeyHandler getKeyHandler(){return keyHandler;}
 	public Debug getDebugKeyHandler() {return debug;}
 
-	public Account account = new Account("Antritus", 123, UUID.randomUUID());
+	public Account account = new Account("(AC) Antritus", 123, UUID.randomUUID());
 
 
 	private Entity[] entities = new Entity[1000];
@@ -127,15 +127,30 @@ public class GamePanel extends JPanel implements Runnable {
 	}
 
 
-	public GamePanel(String name) {
-		imageUtility = new ImageUtility(this);
-//		imageGallery = new ImageGallery(this, imageUtility);
-		controlSettings = new ControlSettings(this);
-		keyHandler = new KeyHandler(this);
-		ui = new UISystem(this);
-		assetSetter = new AssetSetter(this);
-		checker = new CollisionChecker(this);
+	public GamePanel(DefaultSettings defaultSettings) {
+		this.defaultSettings = defaultSettings;
 		debug = new Debug(this);
+		/*
+		 * Load order of classes
+		 * defaultSettings must be first to all classes to work
+		 * ImageUtility is used in almost every class with image, so it needs to be high in the list
+		 * All menus need control settings
+		 * TileManager is not needed until the game loads to a map
+		 * ControlSettings is needed when playing the game or changing controls in the menu
+		 * UI is needed in every class with menu or ui
+		 * AssetSetter is used to place npcs, monsters, items
+		 * Checker (collision checker) is only needed to check collisions after game loads
+		 * debug should always be on the top of all loading ( due to it being used in everywhere
+		 */
+		imageUtility = new ImageUtility(this);
+		ui = new UISystem(this);
+		keyHandler = new KeyHandler(this);
+
+
+		controlSettings = new ControlSettings(this);
+
+
+//		imageGallery = new ImageGallery(this, imageUtility);
 
 
 		this.setPreferredSize(new Dimension(getDefaultSettings().getScreenWidth(), getDefaultSettings().getScreenHeight()));
@@ -181,6 +196,9 @@ public class GamePanel extends JPanel implements Runnable {
 		gameThread.start();
 	}
 	public void setupGame() {
+		tileM = new TileManager(this);
+		assetSetter = new AssetSetter(this);
+		checker = new CollisionChecker(this);
 		player= new Player(this, keyHandler, new Knight(this));
 		staticPlayer = player;
 		assetSetter.setObject();

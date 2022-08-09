@@ -1,6 +1,5 @@
 package entity;
 
-import entity.livingentity.humanentity.player.Player;
 import entity.other.Boat;
 import main.Direction;
 import main.GamePanel;
@@ -11,13 +10,17 @@ import java.awt.image.BufferedImage;
 import java.util.HashMap;
 import java.util.UUID;
 
-public class Entity {
+public abstract class Entity {
 	private int tick = 0;
 	private void tick() {}
 	GamePanel gp;
 	
 	public Entity(GamePanel gp) {
 		this.gp = gp;
+	}
+
+	public void draw(Graphics2D g2) // this is needed in all classes where drawing happens
+	{
 	}
 
 

@@ -14,7 +14,7 @@ public class Main {
 		window.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		window.setResizable(false);
 
-		GamePanel gamePanel = new GamePanel(name);
+		GamePanel gamePanel = new GamePanel(new DefaultSettings());
 		window.add(gamePanel);
 		window.pack();
 
@@ -39,6 +39,6 @@ public class Main {
 		return defaultSettings;
 	}
 	public static void updateIcon(Image icon) {
-		window.setIconImage(icon);
+		window.setIconImage(icon.getImage());
 	}
 }
