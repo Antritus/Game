@@ -31,13 +31,6 @@ public abstract class HumanEntity extends LivingEntity {
 	public void setAction(){}
 
 
-	@Override
-	public void onDeath(boolean cancelled, LivingEntity attacker, Damage damage) {
-	}
-	@Override
-	public void onKill(boolean cancelled, LivingEntity attacker, Damage damage){
-	}
-
 	public void update() {
 		superClasses();
 		setAction();

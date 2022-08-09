@@ -29,15 +29,6 @@ public abstract class HostileEntity extends LivingEntity {
 
 	public void onPlayerCollision() {}
 
-	@Override
-	protected void onKill(boolean cancelled, LivingEntity victim, Damage damage) {
-
-	}
-
-	@Override
-	protected void onDeath(boolean cancelled, LivingEntity attacker, Damage damage) {
-
-	}
 
 	public void update() {
 		superClasses();

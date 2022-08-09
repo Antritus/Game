@@ -10,9 +10,13 @@ import main.GamePanel;
 import org.jetbrains.annotations.NotNull;
 import main.tile.Tile;
 
+import java.awt.*;
 import java.util.ArrayList;
 
 public abstract class LivingEntity extends Entity {
+
+	protected double fov;// = 90.0; // fov is split to by 2 so it counts from 90.0 to 45.0, due to needing -45.0 angle and +45.0 angle
+	protected double fovLength = 75; // length of pixels
 	protected double health = 100.0;
 	protected double maxHealth = 100.0;
 	protected double healthPercentage = 1.0;
@@ -57,9 +61,6 @@ public abstract class LivingEntity extends Entity {
 		healthPercentage = health/maxHealth;
 	}
 
-	protected abstract void onKill(boolean cancelled, LivingEntity victim, Damage damage);/* called when the entity kills something*/
-	protected abstract void onDeath(boolean cancelled, LivingEntity attacker, Damage damage);/* called when the entity dies*/
-
 	protected void onDamageReceive(boolean cancelled, Damage damage, LivingEntity attacker) {
 		if (cancelled) {
 			return;
@@ -74,8 +75,8 @@ public abstract class LivingEntity extends Entity {
 		health -= calculateDamage(damage).getDamage();
 		damageCooldown = 10;
 		if (health <= 0) {
-			attacker.onKill(false, attacker, damage);
-			onDeath(false, attacker, damage);
+//			attacker.onKill(false, attacker, damage);
+//			onDeath(false, attacker, damage);
 		}
 	}
 
@@ -338,4 +339,34 @@ public abstract class LivingEntity extends Entity {
 	public void update() {
 		superClasses();
 	}
+
+	public void setFieldOfView(double fov){
+		this.fov = fov;
+	}
+	public double getFieldOfView() {
+		return fov;
+	}
+	public void setFOV(double fov){
+		this.fov = fov;
+	}
+	public double getFOV() {
+		return fov;
+	}
+
+	public void getLengthOfFieldOfView(double fov){
+		this.fov = fov;
+	}
+	public double getFieldOfViewLength() {
+		return fov;
+	}
+	public void setFOVLength(double fov){
+		this.fov = fov;
+	}
+	public double getFOVLength() {
+		return fov;
+	}
+
+	public void drawFOV(Graphics2D g2) {
+	}
+
 }

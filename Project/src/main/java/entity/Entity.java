@@ -19,7 +19,7 @@ public abstract class Entity {
 		this.gp = gp;
 	}
 
-	public void draw(Graphics2D g2) // this is needed in all classes where drawing happens
+	public void draw(Graphics2D g2, GamePanel gamePanel) // this is needed in all classes where drawing happens
 	{
 	}
 

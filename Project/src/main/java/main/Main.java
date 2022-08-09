@@ -38,7 +38,4 @@ public class Main {
 	public static DefaultSettings getDefaultSettings() {
 		return defaultSettings;
 	}
-	public static void updateIcon(Image icon) {
-		window.setIconImage(icon.getImage());
-	}
 }

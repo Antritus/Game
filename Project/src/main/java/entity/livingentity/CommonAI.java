@@ -1,6 +1,7 @@
 package entity.livingentity;
 
 import damage.Damage;
+import main.Direction;
 import main.GamePanel;
 
 import java.util.HashMap;
@@ -42,7 +43,15 @@ public abstract class CommonAI extends LivingEntity{
     }
 
     private void scanForEntities() {
+        Direction direction = getDirection();
+        double fov = this.getFieldOfView();
+        double fovScannerNeg = this.getFieldOfView()/-1;
+        double fovScannerPos = this.getFieldOfView();
+//        double scannerScanLength = this.getLengthOfFieldOfView;
+        double scannerSkip = 0.01;
+        for (int i = 0; i < fov; i+= scannerSkip){
 
+        }
     }
 
 
@@ -54,14 +63,5 @@ public abstract class CommonAI extends LivingEntity{
         return false;
     }
 
-    @Override
-    protected void onKill(boolean cancelled, LivingEntity victim, Damage damage) {
-
-    }
-
-    @Override
-    protected void onDeath(boolean cancelled, LivingEntity attacker, Damage damage) {
-
-    }
 
 }

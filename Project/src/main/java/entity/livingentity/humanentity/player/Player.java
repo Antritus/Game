@@ -88,12 +88,6 @@ public class Player extends HumanEntity {
 		left2 = skinSystem.setup(path+"side2"+pathEnd, true, false);
 	}
 
-	@Override
-	public void onDeath(boolean cancelled, LivingEntity attacker, Damage damage) {
-	}
-	@Override
-	public void onKill(boolean cancelled, LivingEntity attacker, Damage damage){
-	}
 	public void update() {
 		superClasses();
 		if (gp.getGameState() == gp.getPlayState()) {

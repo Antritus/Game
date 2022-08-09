@@ -89,7 +89,7 @@ public class Boat extends Entity {
 			}
 		}
 	}
-	public void draw(Graphics2D g2) {
+	public void draw(Graphics2D g2, GamePanel gamePanel) {
 		if (!entity.isRidingBoat() || !(entity.getRiddenBoat().getUUID() == this.getUUID())) {
 			return;
 		}

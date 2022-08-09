@@ -308,7 +308,7 @@ public class GamePanel extends JPanel implements Runnable {
 			});
 			for (Entity entity : entityArrayList) {
 				//todo: fix drawing
-//				entity.draw(g2, this);
+				entity.draw(g2, this);
 			}
 			entityArrayList.clear();
 

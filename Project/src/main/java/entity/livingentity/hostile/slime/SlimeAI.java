@@ -58,10 +58,4 @@ public class SlimeAI extends HostileEntity {
 		attack(gp.player, 10.0, DamageElement.ICE_ELEMENT);
 	}
 
-	@Override
-	public void onDeath(boolean cancelled, LivingEntity attacker, Damage damage) {
-	}
-	@Override
-	public void onKill(boolean cancelled, LivingEntity attacker, Damage damage){
-	}
 }

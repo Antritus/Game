@@ -18,15 +18,6 @@ public class ZombieAI extends LivingEntity {
 		this.ai = new ZombieAI(gp, DamageElement.NORMAL_ELEMENT);
 	}
 
-	@Override
-	protected void onKill(boolean cancelled, LivingEntity victim, Damage damage) {
-
-	}
-
-	@Override
-	protected void onDeath(boolean cancelled, LivingEntity attacker, Damage damage) {
-
-	}
 
 	public ZombieAI(GamePanel gp, DamageElement element) {
 		super(gp);
