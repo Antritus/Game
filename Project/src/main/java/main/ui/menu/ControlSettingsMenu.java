@@ -60,8 +60,8 @@ public class ControlSettingsMenu extends Menu {
 	public ControlSettingsMenu(GamePanel gp) {
 		setupScrollbar();
 		this.gp = gp;
-		arrowDown = gp.getImageUtility().setup("/objects/arrow/down.png", false, false, gp.tileSize-6);
-		arrowUp = gp.getImageUtility().setup("/objects/arrow/up.png", false, false, gp.tileSize-6);
+		arrowDown = gp.getImageUtility().setup("/objects/arrow/down.png", false, false, gp.getDefaultSettings().getTileSize()-6);
+		arrowUp = gp.getImageUtility().setup("/objects/arrow/up.png", false, false, gp.getDefaultSettings().getTileSize()-6);
 	}
 
 	public void drawScrollbarBackround(Graphics2D g2, int x, int y, int width, int height){
@@ -85,44 +85,44 @@ public class ControlSettingsMenu extends Menu {
 	public void drawControlSettingsMenu(Graphics2D g2) {
 		boolean drawSettings = true;
 		if (!gp.isDebuggingOn()) {
-			drawMenuBackround(gp, g2, 0, 0, gp.screenWidth, gp.screenHeight, true);
-			drawScrollbarBackround(g2, 830, 0, 12, gp.screenHeight);
-			drawMenuBackround(gp, g2, 0, -20, gp.screenWidth, gp.tileSize/3*4, false);
-			drawMenuBackround(gp, g2, 0, 700, gp.screenWidth, 650, false);
+			drawMenuBackround(gp, g2, 0, 0, gp.getDefaultSettings().getScreenWidth(), gp.getDefaultSettings().getScreenHeight(), true);
+			drawScrollbarBackround(g2, 830, 0, 12, gp.getDefaultSettings().getScreenHeight());
+			drawMenuBackround(gp, g2, 0, -20, gp.getDefaultSettings().getScreenWidth(), gp.getDefaultSettings().getTileSize()/3*4, false);
+			drawMenuBackround(gp, g2, 0, 700, gp.getDefaultSettings().getScreenWidth(), 650, false);
 		}
 		drawScrollbar(g2, 830, menuScrollbarY, 12, 75);
 		g2.setColor(Color.LIGHT_GRAY);
-		int splitScreen = gp.screenWidth/5;
-		int y = -20 + gp.tileSize/3*4-15;
+		int splitScreen = gp.getDefaultSettings().getScreenWidth()/5;
+		int y = -20 + gp.getDefaultSettings().getTileSize()/3*4-15;
 		if (gp.isDebuggingOn()) {
 			g2.setColor(Color.RED);
 			g2.setFont(gp.debugFont);
 			g2.drawLine(830, 50, 830, 690);
 			g2.drawLine(842, 50, 842, 690);
-			g2.drawLine(splitScreen, 0, splitScreen, gp.screenHeight);
-			g2.drawLine(splitScreen * 4, 0, splitScreen * 4, gp.screenHeight);
-			g2.drawLine(gp.screenWidth / 2, 0, gp.screenWidth/2, gp.screenHeight);
+			g2.drawLine(splitScreen, 0, splitScreen, gp.getDefaultSettings().getScreenHeight());
+			g2.drawLine(splitScreen * 4, 0, splitScreen * 4, gp.getDefaultSettings().getScreenHeight());
+			g2.drawLine(gp.getDefaultSettings().getScreenWidth() / 2, 0, gp.getDefaultSettings().getScreenWidth()/2, gp.getDefaultSettings().getScreenHeight());
 		}
 
 		menuX = 0;
 		menuY = 0;
-		menuWidth = gp.screenWidth/5;
-		menuHeight = gp.tileSize*12;
+		menuWidth = gp.getDefaultSettings().getScreenWidth()/5;
+		menuHeight = gp.getDefaultSettings().getTileSize()*12;
 
 		//y = -20 + gp.tileSize/3*4-15;
-		int width = gp.screenWidth/2;
+		int width = gp.getDefaultSettings().getScreenWidth()/2;
 		drawButton(gp, g2, "Done", width - ButtonInfo.getButtonSize(gp, ButtonInfo.SMALL)[0]-15, 710, ButtonInfo.SMALL, 250);
 		drawButton(gp, g2, "Reset All", width + 15, 710, ButtonInfo.SMALL, 249);
 //		drawButton(gp, g2, "Reset To Defaults", 10, 15+ ButtonInfo.getButtonSize(gp, ButtonInfo.SMALL)[1], ButtonInfo.SMALL, 249);
 		drawButton(gp, g2, "", 880, y, ButtonInfo.EXTRA_EXTRA_SMALL, 248);
-		y = ((700-gp.tileSize)-3);
+		y = ((700-gp.getDefaultSettings().getTileSize())-3);
 		drawButton(gp, g2, "", 880, y, ButtonInfo.EXTRA_EXTRA_SMALL, 247);
 		g2.drawImage(arrowUp, 882, 58, null);
 		g2.drawImage(arrowDown, 882, 626, null);
 		if (drawSettings) {
 			int w = (int) (g2.getFontMetrics().getStringBounds("Movement Settings", g2).getWidth()/2);
 			int h = (int) (g2.getFontMetrics().getStringBounds("Movement Settings", g2).getHeight()/2);
-			g2.drawString("Movement Settings", (float) (gp.screenWidth/2 - w), (float) (60 + h));
+			g2.drawString("Movement Settings", (float) (gp.getDefaultSettings().getScreenWidth()/2 - w), (float) (60 + h));
 			drawSetting(g2, "Move North", 255, 65+h, 1, ControlSettingTypes.MOVEMENT_NORTH);
 			drawSetting(g2, "Move West", 255, 120+h, 2, ControlSettingTypes.MOVEMENT_WEST);
 			drawSetting(g2, "Move South", 255, 175+h, 3, ControlSettingTypes.MOVEMENT_SOUTH);
@@ -130,7 +130,7 @@ public class ControlSettingsMenu extends Menu {
 
 			w = (int) (g2.getFontMetrics().getStringBounds("Gameplay Controls", g2).getWidth()/2);
 			h = (int) (g2.getFontMetrics().getStringBounds("Gameplay Controls", g2).getHeight()/2);
-			g2.drawString("Gameplay Controls", (float) (gp.screenWidth/2 - w), (float) (310 + h));
+			g2.drawString("Gameplay Controls", (float) (gp.getDefaultSettings().getScreenWidth()/2 - w), (float) (310 + h));
 
 			drawSetting(g2, "Attack", 255, 315+h, 5, ControlSettingTypes.ATTACK);
 			drawSetting(g2, "Use Item", 255, 370+h, 6, ControlSettingTypes.USE_ITEM);
@@ -144,7 +144,7 @@ public class ControlSettingsMenu extends Menu {
 			return;
 		}
 
-		int splitScreen = gp.screenWidth / 5;
+		int splitScreen = gp.getDefaultSettings().getScreenWidth() / 5;
 		int splitHeight = ButtonInfo.getButtonSize(gp, ButtonInfo.EXTRA_SMALL)[1]/3;
 
 //		if (menuY < y) {
@@ -170,15 +170,15 @@ public class ControlSettingsMenu extends Menu {
 		if (gp.isDebuggingOn()) {
 			g2.setColor(Color.RED);
 			g2.setFont(gp.debugFont);
-			g2.drawLine(splitScreen, 0, splitScreen, gp.screenHeight);
-			g2.drawLine(splitScreen * 4, 0, splitScreen * 4, gp.screenHeight);
+			g2.drawLine(splitScreen, 0, splitScreen, gp.getDefaultSettings().getScreenHeight());
+			g2.drawLine(splitScreen * 4, 0, splitScreen * 4, gp.getDefaultSettings().getScreenHeight());
 			g2.drawString("Default A: " + gp.getControlSettings().getDefaultAssignment(controlSettingType), splitScreen * 4, y+splitHeight);
 			g2.drawString("Default K" + gp.getControlSettings().getDefaultControl(controlSettingType), splitScreen * 4, y+splitHeight*2);
 		}
 		g2.setFont(font);
 	}
 	public void drawSetting(Graphics2D g2, String name, int x, int y,  int settingIndex, ControlSettingTypes controlSettingType) {//
-		int splitScreen = gp.screenWidth / 5;
+		int splitScreen = gp.getDefaultSettings().getScreenWidth() / 5;
 		int splitHeight = ButtonInfo.getButtonSize(gp, ButtonInfo.EXTRA_SMALL)[1]/3;
 
 //		if (menuY < y) {
@@ -204,8 +204,8 @@ public class ControlSettingsMenu extends Menu {
 		if (gp.isDebuggingOn()) {
 			g2.setColor(Color.RED);
 			g2.setFont(gp.debugFont);
-			g2.drawLine(splitScreen, 0, splitScreen, gp.screenHeight);
-			g2.drawLine(splitScreen * 4, 0, splitScreen * 4, gp.screenHeight);
+			g2.drawLine(splitScreen, 0, splitScreen, gp.getDefaultSettings().getScreenHeight());
+			g2.drawLine(splitScreen * 4, 0, splitScreen * 4, gp.getDefaultSettings().getScreenHeight());
 			g2.drawString("Default A: " + gp.getControlSettings().getDefaultAssignment(controlSettingType), splitScreen * 4, y+splitHeight);
 			g2.drawString("Default K" + gp.getControlSettings().getDefaultControl(controlSettingType), splitScreen * 4, y+splitHeight*2);
 		}

@@ -27,9 +27,9 @@ public class TileManager {
 		this.gp = gp;
 		this.imageUtility = new ImageUtility(gp);
 		tile = new Tile[101];
-		mapTile = new BufferedImage[gp.maxWorldCol][gp.maxWorldRow];
+		mapTile = new BufferedImage[gp.getDefaultSettings().getMaxWorldCol()][gp.getDefaultSettings().getMaxWorldRow()];
 
-		mapTileNumber = new int[gp.maxWorldCol][gp.maxWorldRow];
+		mapTileNumber = new int[gp.getDefaultSettings().getMaxWorldCol()][gp.getDefaultSettings().getMaxWorldRow()];
 
 		getTileImage();
 
@@ -58,7 +58,7 @@ public class TileManager {
 			String location = "/tiles/";
 			tile[i] = new Tile("");
 			tile[i].image = ImageIO.read(getClass().getResourceAsStream(location + image + ".png"));
-			tile[i].image = imageUtility.scale(tile[i].image, gp.tileSize, gp.tileSize);
+			tile[i].image = imageUtility.scale(tile[i].image, gp.getDefaultSettings().getTileSize(), gp.getDefaultSettings().getTileSize());
 			tile[i].liquid = liquid;
 			tile[i].collision = collision;
 		}catch (IOException e){
@@ -70,7 +70,7 @@ public class TileManager {
 			String location = "/tiles/water/";
 			BufferedImage returnImage;
 			returnImage = ImageIO.read(getClass().getResourceAsStream(location + image + ".png"));
-			returnImage = imageUtility.scale(returnImage, gp.tileSize, gp.tileSize);
+			returnImage = imageUtility.scale(returnImage, gp.getDefaultSettings().getTileSize(), gp.getDefaultSettings().getTileSize());
 			return returnImage;
 		}catch (IOException e){
 			e.printStackTrace();
@@ -84,16 +84,16 @@ public class TileManager {
 
 			int col = 0;
 			int row = 0;
-			while (col < gp.maxWorldCol && row < gp.maxWorldRow){
+			while (col < gp.getDefaultSettings().getMaxScreenCol() && row < gp.getDefaultSettings().getMaxWorldRow()){
 				String line = br.readLine();
-				while (col<gp.maxWorldCol) {
+				while (col<gp.getDefaultSettings().getMaxScreenCol()) {
 					String numbers[] = line.split(" ");
 
 					int num = Integer.parseInt(numbers[col]);
 					mapTileNumber[col][row] = num;
 					col++;
 				}
-				if (col == gp.maxWorldCol) {
+				if (col == gp.getDefaultSettings().getMaxScreenCol()) {
 					col = 0;
 					row++;
 				}
@@ -103,10 +103,10 @@ public class TileManager {
 			e.printStackTrace();
 		}
 	}
-	public void loadWater() { // Doesnt seem to work drawing debug tile when not supposed to draw..?
+	public void loadWater() { // Doesn't seem to work drawing debug tile when not supposed to draw..?
 		int worldCol = 0;
 		int worldRow = 0;
-		while (worldCol < gp.maxWorldCol && worldRow < gp.maxWorldRow) {
+		while (worldCol < gp.getDefaultSettings().getMaxWorldCol() && worldRow < gp.getDefaultSettings().getMaxWorldRow()) {
 			int tileNum = mapTileNumber[worldCol][worldRow];
 			if (tile[tileNum].liquid) {
 				boolean up, down, right, left;
@@ -118,10 +118,10 @@ public class TileManager {
 					int tileNumUp = mapTileNumber[worldCol][worldRow - 1];
 					up = tile[tileNumUp].liquid;
 				}
-				if (worldRow + 1 < gp.maxWorldRow) {
+				if (worldRow + 1 < gp.getDefaultSettings().getMaxWorldRow()) {
 					int tileNumDown = mapTileNumber[worldCol][worldRow + 1];
 					down = tile[tileNumDown].liquid;
-				}if (worldCol + 1 < gp.maxWorldCol){
+				}if (worldCol + 1 < gp.getDefaultSettings().getMaxWorldCol()){
 					int tileNumRight = mapTileNumber[worldCol +1 ][worldRow];
 					right = tile[tileNumRight].liquid;
 				} if (worldCol - 1 >= 0) {
@@ -136,7 +136,7 @@ public class TileManager {
 //				}
 			}
 			worldCol++;
-			if (worldCol == gp.maxWorldCol) {
+			if (worldCol == gp.getDefaultSettings().getMaxWorldCol()) {
 				worldCol = 0;
 				worldRow++;
 			}
@@ -147,21 +147,21 @@ public class TileManager {
 		int worldCol = 0;
 		int worldRow = 0;
 
-		while (worldCol < gp.maxWorldCol && worldRow < gp.maxWorldRow) {
+		while (worldCol < gp.getDefaultSettings().getMaxWorldCol() && worldRow < gp.getDefaultSettings().getMaxWorldRow()) {
 
 			int tileNum = mapTileNumber[worldCol][worldRow];
 
-			int worldX = worldCol * gp.tileSize;
-			int worldY = worldRow * gp.tileSize;
+			int worldX = worldCol * gp.getDefaultSettings().getTileSize();
+			int worldY = worldRow * gp.getDefaultSettings().getTileSize();
 					int screenX = worldX - gp.player.getX() + gp.player.screenX;
 					int screenY = worldY - gp.player.getY() + gp.player.screenY;
-					if (worldX + gp.tileSize> gp.player.getX() - gp.player.screenX &&
-							worldX - gp.tileSize< gp.player.getX() + gp.player.screenX &&
-							worldY + gp.tileSize> gp.player.getY() - gp.player.screenY &&
-							worldY - gp.tileSize< gp.player.getY() + gp.player.screenY) {
+					if (worldX + gp.getDefaultSettings().getTileSize()> gp.player.getX() - gp.player.screenX &&
+							worldX - gp.getDefaultSettings().getTileSize()< gp.player.getX() + gp.player.screenX &&
+							worldY + gp.getDefaultSettings().getTileSize()> gp.player.getY() - gp.player.screenY &&
+							worldY - gp.getDefaultSettings().getTileSize()< gp.player.getY() + gp.player.screenY) {
 						g2.drawImage(tile[tileNum].image, screenX, screenY, null);
 			}			worldCol++;
-			if (worldCol == gp.maxWorldCol) {
+			if (worldCol == gp.getDefaultSettings().getMaxWorldCol()) {
 				worldCol = 0;
 				worldRow++;
 			}
@@ -172,16 +172,16 @@ public class TileManager {
 		int row = 0;
 		int x = 0;
 		int y = 0;
-		while (col < gp.maxScreenCol && row < gp.maxScreenRow) {
+		while (col < gp.getDefaultSettings().getMaxScreenCol() && row < gp.getDefaultSettings().getMaxScreenCol()) {
 			int tileNum = mapTileNumber[col][row];
 			g2.drawImage(tile[tileNum].image, x, y, null);
 			col++;
-			x += gp.tileSize;
-			if (col == gp.maxScreenCol) {
+			x += gp.getDefaultSettings().getTileSize();
+			if (col == gp.getDefaultSettings().getMaxScreenCol()) {
 				col = 0;
 				x = 0;
 				row++;
-				y += gp.tileSize;
+				y += gp.getDefaultSettings().getTileSize();
 			}
 		}
 	}

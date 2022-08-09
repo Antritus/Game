@@ -24,8 +24,8 @@ public class AssetSetter {
 			return;
 		}
 		gp.npc[0] = new NPC_OldMan(gp);
-		gp.npc[0].setX(3*gp.tileSize);
-		gp.npc[0].setY(3*gp.tileSize);
+		gp.npc[0].setX(3*gp.getDefaultSettings().getTileSize());
+		gp.npc[0].setY(3*gp.getDefaultSettings().getTileSize());
 	}
 
 	public void setHostile() {
@@ -33,7 +33,7 @@ public class AssetSetter {
 			return;
 		}
 		gp.hostile[0] = new HOS_Slime(gp);
-		gp.hostile[0].setX(2*gp.tileSize);
-		gp.hostile[0].setY(3*gp.tileSize);
+		gp.hostile[0].setX(2*gp.getDefaultSettings().getTileSize());
+		gp.hostile[0].setY(3*gp.getDefaultSettings().getTileSize());
 	}
 }

@@ -117,6 +117,6 @@ public class Boat extends Entity {
 		if (this.isUpsideDown()) {
 			image = skinSystem.flipVertically(image);
 		}
-		g2.drawImage(image, entity.screenX, entity.screenY, gp.tileSize, gp.tileSize, null);
+		g2.drawImage(image, entity.screenX, entity.screenY, gp.getDefaultSettings().getTileSize(), gp.getDefaultSettings().getTileSize(), null);
 	}
 }

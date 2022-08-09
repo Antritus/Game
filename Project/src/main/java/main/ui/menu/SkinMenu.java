@@ -118,14 +118,14 @@ public class SkinMenu {
 	public int g = 0;
 	public void drawSkinMenu(Graphics2D g2) {
 		g2.setColor(Color.gray);
-		g2.fillRect(0, 0, gp.screenWidth, gp.screenHeight);
+		g2.fillRect(0, 0, gp.getDefaultSettings().getScreenWidth(), gp.getDefaultSettings().getScreenHeight());
 
 		int x;
 		int y;
 
 
-		int xPic = gp.screenWidth / 2 + 50;
-		int yPic = gp.screenHeight / 2 - 200;
+		int xPic = gp.getDefaultSettings().getScreenWidth() / 2 + 50;
+		int yPic = gp.getDefaultSettings().getScreenHeight() / 2 - 200;
 
 		changeModelTime++;
 		if (changeModelTime == 120) {
@@ -134,8 +134,8 @@ public class SkinMenu {
 		}
 
 		String text = "Skin Selection";
-		x = gp.screenWidth / 2 - 500;
-		y = gp.screenHeight / 2 - 200;
+		x = gp.getDefaultSettings().getScreenWidth() / 2 - 500;
+		y = gp.getDefaultSettings().getScreenHeight() / 2 - 200;
 		g2.setColor(Color.DARK_GRAY);
 		g2.setColor(new Color(42, 0, 0));
 		g2.drawString(text, x + 2, y + 2);
@@ -143,15 +143,15 @@ public class SkinMenu {
 		g2.drawString(text, x, y);
 
 		text = "Main Menu";
-		x = gp.screenWidth / 2 - 450;
-		y = gp.screenHeight / 2 - 30;
+		x = gp.getDefaultSettings().getScreenWidth() / 2 - 450;
+		y = gp.getDefaultSettings().getScreenHeight() / 2 - 30;
 		g2.drawString(text, x, y);
 		if (skinMenuSlot.ordinal() == 0) {
-			g2.drawString(">", x-gp.tileSize/2, y);
+			g2.drawString(">", x-gp.getDefaultSettings().getTileSize()/2, y);
 		}
 		g2.setColor(Color.BLACK);
-		int width = gp.tileSize/2;
-		int height = gp.tileSize/2;
+		int width = gp.getDefaultSettings().getTileSize()/2;
+		int height = gp.getDefaultSettings().getTileSize()/2;
 		y += 90;
 		g2.fillRect(x, y, width*3, height);
 		g2.setColor(Color.WHITE);

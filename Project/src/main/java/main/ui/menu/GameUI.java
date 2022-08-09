@@ -145,7 +145,7 @@ public class GameUI {
 	public void drawHearts() {
 		int x = 15;
 		int y = 15;
-		int scale = gp.tileSize;
+		int scale = gp.getDefaultSettings().getTileSize();
 		if (g2 == null) {
 			return;
 		}
@@ -160,10 +160,10 @@ public class GameUI {
 	Graphics2D g2;
 	public void draw(Graphics2D g2){
 		this.g2 = g2;
-		scale = gp.tileSize;
+		scale = gp.getDefaultSettings().getTileSize();
 		x = 15;
 		y = 15;
-		int scale = gp.tileSize;
+		int scale = gp.getDefaultSettings().getTileSize();
 		if (!gp.isDebuggingOn()) {
 			drawHearts();
 		}

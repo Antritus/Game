@@ -55,4 +55,12 @@ public class DefaultSettings {
     public String getName() {
         return name;
     }
+
+    public int getScreenHeight() {
+        return screenHeight;
+    }
+
+    public int getScreenWidth() {
+        return screenWidth;
+    }
 }

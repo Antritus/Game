@@ -161,7 +161,7 @@ public class ImageUtility {
 			} if (turnHorizontally) {
 				image = flipHorizontally(image);
 			}
-			image = scale(image, gp.tileSize, gp.tileSize);
+			image = scale(image, gp.getDefaultSettings().getTileSize(), gp.getDefaultSettings().getTileSize());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

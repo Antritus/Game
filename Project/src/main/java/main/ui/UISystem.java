@@ -146,13 +146,13 @@ public class UISystem {
 		g2.setColor(Color.white);
 	}
 	public void drawDialogScreen() {
-		int x = gp.tileSize*2;
-		int y = gp.tileSize;
-		int width = gp.screenWidth - (gp.tileSize * 4);
-		int height = gp.screenHeight - (gp.tileSize * (9));
+		int x = gp.getDefaultSettings().getTileSize()*2;
+		int y = gp.getDefaultSettings().getTileSize();
+		int width = gp.getDefaultSettings().getScreenWidth() - (gp.getDefaultSettings().getTileSize() * 4);
+		int height = gp.getDefaultSettings().getScreenHeight() - (gp.getDefaultSettings().getTileSize() * (9));
 		drawDialogWindow(x, y, width, height);
-		x += gp.tileSize;
-		y += gp.tileSize;
+		x += gp.getDefaultSettings().getTileSize();
+		y += gp.getDefaultSettings().getTileSize();
 
 		for (String dialogMessage : currentDialog.split("\n")) {
 			if (dialogMessage == null) {
@@ -166,7 +166,7 @@ public class UISystem {
 	public void drawMessage(Graphics2D g2) {
 		if (messageOn) {
 			g2.setFont(messageFont);
-			g2.drawString(message, gp.tileSize / 2, gp.tileSize * 3);
+			g2.drawString(message, gp.getDefaultSettings().getTileSize() / 2, gp.getDefaultSettings().getTileSize() * 3);
 			g2.setFont(arial_40);
 			messageTimer++;
 			if (messageTimer == 120) {
@@ -186,8 +186,8 @@ public class UISystem {
 
 			textLength = (int) g2.getFontMetrics().getStringBounds(centeredText, g2).getWidth();
 
-			x = gp.screenWidth / 2 - textLength / 2;
-			y = gp.screenHeight / 2 - 62;
+			x = gp.getDefaultSettings().getScreenWidth() / 2 - textLength / 2;
+			y = gp.getDefaultSettings().getScreenHeight() / 2 - 62;
 			g2.drawString(centeredText, x, y);
 			centeredTextTimer--;
 			if (centeredTextTimer == 0) {
@@ -207,8 +207,8 @@ public class UISystem {
 
 			textLength = (int) g2.getFontMetrics().getStringBounds(title, g2).getWidth();
 
-			x = gp.screenWidth / 2 - textLength / 2;
-			y = gp.screenHeight / 2 - 80;
+			x = gp.getDefaultSettings().getScreenWidth() / 2 - textLength / 2;
+			y = gp.getDefaultSettings().getScreenHeight() / 2 - 80;
 			g2.drawString(title, x, y);
 			titleTimer--;
 			if (titleTimer == 0) {
@@ -226,8 +226,8 @@ public class UISystem {
 
 			textLength = (int) g2.getFontMetrics().getStringBounds(subtitle, g2).getWidth();
 
-			x = gp.screenWidth / 2 - textLength / 2;
-			y = gp.screenHeight / 2 - 50;
+			x = gp.getDefaultSettings().getScreenWidth() / 2 - textLength / 2;
+			y = gp.getDefaultSettings().getScreenHeight() / 2 - 50;
 			g2.drawString(subtitle, x, y);
 			subtitleTimer--;
 			if (subtitleTimer == 0) {
@@ -247,12 +247,12 @@ public class UISystem {
 	}
 	public int getCenteredTextX(String text) {
 		int length = (int)g2.getFontMetrics().getStringBounds(text, g2).getWidth();
-		return (gp.screenWidth/2 - length/2);
+		return (gp.getDefaultSettings().getScreenWidth()/2 - length/2);
 	}
 	public void drawPauseScreen() {
 		String text = "Paused";
 		int x = getCenteredTextX(text);
-		int y = gp.screenHeight / 2 - 62;
+		int y = gp.getDefaultSettings().getScreenHeight() / 2 - 62;
 		g2.drawString(text, x, y);
 	}
 	public boolean isMessageOn() {return messageOn;}

@@ -19,8 +19,8 @@ public class PauseMenu extends Menu {
 
 
 
-		int x = gp.screenWidth / 2 - ButtonInfo.getButtonSize(gp, ButtonInfo.MEDIUM)[0]/2;
-		int y = gp.screenHeight / 2 - 200;
+		int x = gp.getDefaultSettings().getScreenWidth() / 2 - ButtonInfo.getButtonSize(gp, ButtonInfo.MEDIUM)[0]/2;
+		int y = gp.getDefaultSettings().getScreenHeight() / 2 - 200;
 		g2.setColor(Color.WHITE);
 		drawButton(gp, g2, "Continue", x, y, ButtonInfo.MEDIUM,0);
 		drawButton(gp, g2, "Settings", x, y+70, ButtonInfo.MEDIUM,1);

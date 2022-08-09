@@ -124,8 +124,8 @@ public class Menu {
 		setup(gp);
 		int col = 0;
 		int row = 0;
-		int maxCol = width/gp.tileSize;
-		int maxRow = height/gp.tileSize;
+		int maxCol = width/gp.getDefaultSettings().getTileSize();
+		int maxRow = height/gp.getDefaultSettings().getTileSize();
 		final int startX = x;
 		final int startY = y;
 		while (col < maxCol && row < maxRow) {
@@ -139,11 +139,11 @@ public class Menu {
 
 
 			if (col == maxCol) {
-				y += gp.tileSize;
+				y += gp.getDefaultSettings().getTileSize();
 				row++;
 				col = 0;
 			}
-			x = (col * gp.tileSize);
+			x = (col * gp.getDefaultSettings().getTileSize());
 
 		}
 	}
@@ -154,18 +154,18 @@ public class Menu {
 		int row = 0;
 		int x = 0;
 		int y = 0;
-		while (col < gp.maxScreenCol && row < gp.maxScreenRow) {
+		while (col < gp.getDefaultSettings().getMaxScreenCol() && row < gp.getDefaultSettings().getMaxScreenCol()) {
 
 			g2.drawImage(image, x, y, null);
 			col++;
 
 
-			if (col == gp.maxScreenCol) {
-				y += gp.tileSize;
+			if (col == gp.getDefaultSettings().getMaxScreenCol()) {
+				y += gp.getDefaultSettings().getTileSize();
 				row++;
 				col = 0;
 			}
-			x = (col * gp.tileSize);
+			x = (col * gp.getDefaultSettings().getTileSize());
 
 		}
 	}

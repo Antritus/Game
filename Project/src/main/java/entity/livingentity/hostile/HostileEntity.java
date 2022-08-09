@@ -94,14 +94,14 @@ public abstract class HostileEntity extends LivingEntity {
 		if (this.getType() == EntityType.PLAYER) {
 			g2.drawImage(image, (int) screenX, (int) screenY, null);
 		} else {
-			if (getX() + gp.tileSize > gp.player.getX() - gp.player.screenX &&
-					getX() - gp.tileSize < gp.player.getX() + gp.player.screenX &&
-					getY() + gp.tileSize > gp.player.getY() - gp.player.screenY &&
-					getY() - gp.tileSize < gp.player.getY() + gp.player.screenY) {
+			if (getX() + gp.getDefaultSettings().getTileSize() > gp.player.getX() - gp.player.screenX &&
+					getX() - gp.getDefaultSettings().getTileSize() < gp.player.getX() + gp.player.screenX &&
+					getY() + gp.getDefaultSettings().getTileSize() > gp.player.getY() - gp.player.screenY &&
+					getY() - gp.getDefaultSettings().getTileSize() < gp.player.getY() + gp.player.screenY) {
 				if (this.isUpsideDown()) {
 					image = skinSystem.flipVertically(image);
 				}
-				g2.drawImage(image, (int) screenX, (int) screenY, gp.tileSize, gp.tileSize, null);
+				g2.drawImage(image, (int) screenX, (int) screenY, gp.getDefaultSettings().getTileSize(), gp.getDefaultSettings().getTileSize(), null);
 			}
 		}
 	}

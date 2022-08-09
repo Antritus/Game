@@ -128,7 +128,6 @@ public class GamePanel extends JPanel implements Runnable {
 
 
 	public GamePanel(String name) {
-		this.name = name;
 		imageUtility = new ImageUtility(this);
 //		imageGallery = new ImageGallery(this, imageUtility);
 		controlSettings = new ControlSettings(this);
@@ -139,7 +138,7 @@ public class GamePanel extends JPanel implements Runnable {
 		debug = new Debug(this);
 
 
-		this.setPreferredSize(new Dimension(getDefaultSettings().screenWidth, getDefaultSettings().screenHeight));
+		this.setPreferredSize(new Dimension(getDefaultSettings().getScreenWidth(), getDefaultSettings().getScreenHeight()));
 		this.setBackground(Color.black);
 		this.setDoubleBuffered(true);
 		this.addKeyListener(keyHandler);

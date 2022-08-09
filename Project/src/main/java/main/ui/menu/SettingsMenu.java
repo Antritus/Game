@@ -18,8 +18,8 @@ public class SettingsMenu extends Menu {
 	public SettingsMenu(GamePanel gp) {
 		setupScrollbar();
 		this.gp = gp;
-		arrowDown = gp.getImageUtility().setup("/objects/arrow/down.png", false, false, gp.tileSize-6);
-		arrowUp = gp.getImageUtility().setup("/objects/arrow/up.png", false, false, gp.tileSize-6);
+		arrowDown = gp.getImageUtility().setup("/objects/arrow/down.png", false, false, gp.getDefaultSettings().getTileSize()-6);
+		arrowUp = gp.getImageUtility().setup("/objects/arrow/up.png", false, false, gp.getDefaultSettings().getTileSize()-6);
 	}
 
 	GamePanel gp;
@@ -89,11 +89,11 @@ public class SettingsMenu extends Menu {
 //			drawMenuBackround(gp, g2, 0, 0, gp.screenWidth, gp.screenHeight, true);
 //			drawScrollbarBackround(g2, 830, 0, 12, gp.screenHeight);
 //			drawMenuBackround(gp, g2, 0, -20, gp.screenWidth, gp.tileSize/3*4, false);
-			drawMenuBackround(gp, g2, 0, -12, gp.screenWidth, gp.screenHeight+gp.tileSize, false);
+			drawMenuBackround(gp, g2, 0, -12, gp.getDefaultSettings().getScreenWidth(), gp.getDefaultSettings().getScreenHeight()+gp.getDefaultSettings().getTileSize(), false);
 		}
 //		drawScrollbar(g2, 830, menuScrollbarY, 12, 75);
 		g2.setColor(Color.LIGHT_GRAY);
-		int splitScreen = gp.screenWidth/5;
+		int splitScreen = gp.getDefaultSettings().getScreenWidth()/5;
 		if (gp.isDebuggingOn()) {
 			Font font = g2.getFont();
 			g2.setColor(Color.RED);
@@ -102,12 +102,12 @@ public class SettingsMenu extends Menu {
 //			g2.drawLine(842, 50, 842, 690);
 //			g2.drawLine(splitScreen, 0, splitScreen, gp.screenHeight);
 //			g2.drawLine(splitScreen * 4, 0, splitScreen * 4, gp.screenHeight);
-			g2.drawLine(gp.screenWidth / 2, 0, gp.screenWidth/2, gp.screenHeight);
+			g2.drawLine(gp.getDefaultSettings().getScreenWidth() / 2, 0, gp.getDefaultSettings().getScreenWidth()/2, gp.getDefaultSettings().getScreenHeight());
 			g2.setFont(font);
 		}
 
 
-		int width = gp.screenWidth/2;
+		int width = gp.getDefaultSettings().getScreenWidth()/2;
 		int y = 70;
 		int  widthWButton = ButtonInfo.getButtonSize(gp, ButtonInfo.LARGE)[0]/2;
 		drawButton(gp, g2, "Back", width-widthWButton, y, ButtonInfo.LARGE, 0);

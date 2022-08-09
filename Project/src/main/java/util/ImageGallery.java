@@ -39,12 +39,12 @@ public class ImageGallery {
 	private final BufferedImage old_man_left_2 = imageUtility.setup("/entity/npc/oldman/side2.png", true, false);
 
 	private final BufferedImage object_hearts = imageUtility.setup("/objects/health/hearts.png", false, false);
-	private final BufferedImage object_heart_0 = ImageUtility.scale(new SpriteSheet(object_hearts).getSprite(0, 0, 16, 16), gp.tileSize, gp.tileSize);
-	private final BufferedImage object_heart_20 = ImageUtility.scale(new SpriteSheet(object_hearts).getSprite(1, 0, 16, 16), gp.tileSize, gp.tileSize);
-	private final BufferedImage object_heart_40 = ImageUtility.scale(new SpriteSheet(object_hearts).getSprite(2, 0, 16, 16), gp.tileSize, gp.tileSize);
-	private final BufferedImage object_heart_60 = ImageUtility.scale(new SpriteSheet(object_hearts).getSprite(0, 0, 16, 16), gp.tileSize, gp.tileSize);
-	private final BufferedImage object_heart_80 = ImageUtility.scale(new SpriteSheet(object_hearts).getSprite(1, 1, 16, 16), gp.tileSize, gp.tileSize);
-	private final BufferedImage object_heart_100 = ImageUtility.scale(new SpriteSheet(object_hearts).getSprite(2, 1, 16, 16), gp.tileSize, gp.tileSize);
+	private final BufferedImage object_heart_0 = ImageUtility.scale(new SpriteSheet(object_hearts).getSprite(0, 0, 16, 16), gp.getDefaultSettings().getTileSize(), gp.getDefaultSettings().getTileSize());
+	private final BufferedImage object_heart_20 = ImageUtility.scale(new SpriteSheet(object_hearts).getSprite(1, 0, 16, 16), gp.getDefaultSettings().getTileSize(), gp.getDefaultSettings().getTileSize());
+	private final BufferedImage object_heart_40 = ImageUtility.scale(new SpriteSheet(object_hearts).getSprite(2, 0, 16, 16), gp.getDefaultSettings().getTileSize(), gp.getDefaultSettings().getTileSize());
+	private final BufferedImage object_heart_60 = ImageUtility.scale(new SpriteSheet(object_hearts).getSprite(0, 0, 16, 16), gp.getDefaultSettings().getTileSize(), gp.getDefaultSettings().getTileSize());
+	private final BufferedImage object_heart_80 = ImageUtility.scale(new SpriteSheet(object_hearts).getSprite(1, 1, 16, 16), gp.getDefaultSettings().getTileSize(), gp.getDefaultSettings().getTileSize());
+	private final BufferedImage object_heart_100 = ImageUtility.scale(new SpriteSheet(object_hearts).getSprite(2, 1, 16, 16), gp.getDefaultSettings().getTileSize(), gp.getDefaultSettings().getTileSize());
 
 	private final BufferedImage object_arrow_up = imageUtility.setup("/objects/arrow/up.png", true, false);
 	private final BufferedImage object_arrow_down = imageUtility.setup("/objects/arrow/down.png", true, false);

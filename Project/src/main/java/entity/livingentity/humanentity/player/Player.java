@@ -35,8 +35,8 @@ public class Player extends HumanEntity {
 		skinSystem = new ImageUtility(gp);
 
 
-		screenX = gp.screenWidth / 2 - (gp.tileSize / 2);
-		screenY = gp.screenHeight / 2 - (gp.tileSize / 2);
+		screenX = gp.getDefaultSettings().getScreenWidth() / 2 - (gp.getDefaultSettings().getTileSize() / 2);
+		screenY = gp.getDefaultSettings().getScreenHeight() / 2 - (gp.getDefaultSettings().getTileSize() / 2);
 
 		setDefaultValues();
 		getPlayerImage();
@@ -49,8 +49,8 @@ public class Player extends HumanEntity {
 		this.setHasCollision(true);
 		this.entityType = EntityType.PLAYER;
 		this.setCollisionOn(Tile.CollisionType.NONE);
-		setX(gp.tileSize * 1);
-		setY(gp.tileSize * 1);
+		setX(gp.getDefaultSettings().getTileSize() * 1);
+		setY(gp.getDefaultSettings().getTileSize() * 1);
 		this.setSolidArea(new Rectangle());
 		this.getSolidArea().x = 15;
 		this.getSolidArea().y = 27;

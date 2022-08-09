@@ -53,11 +53,11 @@ public class Object extends Entity {
 	public void draw(Graphics2D g2, GamePanel gp) {
 		double screenX = getX() - gp.player.getX() + gp.player.screenX;
 		double screenY = getY() - gp.player.getY() + gp.player.screenY;
-		if (getX() + gp.tileSize > gp.player.getX() - gp.player.screenX &&
-				getX() - gp.tileSize < gp.player.getX() + gp.player.screenX &&
-				getY() + gp.tileSize > gp.player.getY() - gp.player.screenY &&
-				getY() - gp.tileSize < gp.player.getY() + gp.player.screenY) {
-			g2.drawImage(image, (int) screenX, (int) screenY, gp.tileSize, gp.tileSize, null);
+		if (getX() + gp.getDefaultSettings().getTileSize() > gp.player.getX() - gp.player.screenX &&
+				getX() - gp.getDefaultSettings().getTileSize() < gp.player.getX() + gp.player.screenX &&
+				getY() + gp.getDefaultSettings().getTileSize() > gp.player.getY() - gp.player.screenY &&
+				getY() - gp.getDefaultSettings().getTileSize() < gp.player.getY() + gp.player.screenY) {
+			g2.drawImage(image, (int) screenX, (int) screenY, gp.getDefaultSettings().getTileSize(), gp.getDefaultSettings().getTileSize(), null);
 		}
 	}
 }

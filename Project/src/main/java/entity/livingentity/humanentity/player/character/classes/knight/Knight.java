@@ -14,7 +14,7 @@ public class Knight extends Character {
 				"Killing enemies has never been this fun! (BS!)",
 				"Nightly",
 				"Knight",
-				ImageUtility.setup("/entity/player/knight_class/icon.png", false, false, ((((gp.tileSize/3)*2)))));
+				ImageUtility.setup("/entity/player/knight_class/icon.png", false, false, ((((gp.getDefaultSettings().getTileSize()/3)*2)))));
 	}
 	public void callAbility() {
 		if (this.getCharacterAbility().getCooldown() != 0) {

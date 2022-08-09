@@ -11,18 +11,18 @@ public enum ButtonInfo {
 
 	public static int[] getButtonSize(GamePanel gp, ButtonInfo buttonInfo) {
 		int[] returnValues = new int[2];
-		returnValues[1] = gp.tileSize -  gp.tileSize/4;
+		returnValues[1] = gp.getDefaultSettings().getTileSize() -  gp.getDefaultSettings().getTileSize()/4;
 		if (buttonInfo == EXTRA_EXTRA_SMALL) {
-			returnValues[0] = gp.tileSize;
-			returnValues[1] = gp.tileSize;
+			returnValues[0] = gp.getDefaultSettings().getTileSize();
+			returnValues[1] = gp.getDefaultSettings().getTileSize();
 		} else if (buttonInfo == EXTRA_SMALL) {
-			returnValues[0] = 2 * gp.tileSize;
+			returnValues[0] = 2 * gp.getDefaultSettings().getTileSize();
 		} else if (buttonInfo == SMALL) {
-			returnValues[0] = 3*gp.tileSize;
+			returnValues[0] = 3*gp.getDefaultSettings().getTileSize();
 		} else if (buttonInfo == MEDIUM) {
-			returnValues[0] = 4*gp.tileSize;
+			returnValues[0] = 4*gp.getDefaultSettings().getTileSize();
 		} else if (buttonInfo == LARGE) {
-			returnValues[0] = 5*gp.tileSize;
+			returnValues[0] = 5*gp.getDefaultSettings().getTileSize();
 		}
 		return returnValues;
 	}
