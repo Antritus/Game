@@ -1,1 +1,1 @@
-#MT/TDC(X00001)  // Tile com.gmail.antcoreservices.games.laura.damage cause name error ( name not set )
+#MT/TDC(X00001)  // Tile damage cause name error ( name not set )
