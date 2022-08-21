@@ -1,8 +1,9 @@
 package com.gmail.antcoreservices.games.laura.entity.livingentity.hostile.slime;
 
 import com.gmail.antcoreservices.games.laura.damage.DamageElement;
+import com.gmail.antcoreservices.games.laura.entity.EntityType;
 import com.gmail.antcoreservices.games.laura.entity.livingentity.hostile.HostileEntity;
-import com.gmail.antcoreservices.games.laura.main.Direction;
+import com.gmail.antcoreservices.games.laura.map.location.Direction;
 import com.gmail.antcoreservices.games.laura.main.GamePanel;
 import com.gmail.antcoreservices.games.laura.map.Tile;
 
@@ -11,7 +12,7 @@ import java.util.Random;
 public class SlimeAI extends HostileEntity {
 	public GamePanel gp;
 	
-	public SlimeAI(GamePanel gp) {
+	public SlimeAI(GamePanel gp, EntityType entityClass) {
 		super(gp);
 		this.gp = gp;
 	}

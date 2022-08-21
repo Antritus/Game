@@ -1,7 +1,7 @@
 package com.gmail.antcoreservices.games.laura.events.events.entityevent;
 
 import com.gmail.antcoreservices.games.laura.entity.livingentity.LivingEntity;
-import com.gmail.antcoreservices.games.laura.map.Location;
+import com.gmail.antcoreservices.games.laura.map.location.Location;
 
 public class EntityMovementEvent extends EntityEvent{
     private Location newLocation, oldLocation;

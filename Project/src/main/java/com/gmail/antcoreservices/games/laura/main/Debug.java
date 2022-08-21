@@ -38,6 +38,10 @@ public class Debug {
 		list.add("Player Colliding Object: " + gp.player.isCollidingObject());
 		list.add("Player Colliding Entity: " + gp.player.isCollidingNPC());
 		list.add("Player Colliding Player: " + gp.player.isCollidingPlayer());
+		list.add("Player X: " + gp.player.getX());
+		list.add("Player Y: " + gp.player.getY());
+		list.add("Player Col: Todo");
+		list.add("Player Row: Todo");
 		list.add("");
 		int x = 5;
 		int y = 20;

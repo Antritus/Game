@@ -1,10 +1,8 @@
 package com.gmail.antcoreservices.games.laura.entity.livingentity.humanentity.npc;
 
-import com.gmail.antcoreservices.games.laura.damage.Damage;
 import com.gmail.antcoreservices.games.laura.entity.EntityType;
-import com.gmail.antcoreservices.games.laura.entity.livingentity.LivingEntity;
 import com.gmail.antcoreservices.games.laura.entity.livingentity.humanentity.HumanEntity;
-import com.gmail.antcoreservices.games.laura.main.Direction;
+import com.gmail.antcoreservices.games.laura.map.location.Direction;
 import com.gmail.antcoreservices.games.laura.main.GamePanel;
 import com.gmail.antcoreservices.games.laura.util.ImageUtility;
 
@@ -15,7 +13,7 @@ public class NPC_OldMan extends HumanEntity {
 	GamePanel gp;
 	ImageUtility imageUtility;
 	public NPC_OldMan(GamePanel gp) {
-		super(gp);
+		super(gp, EntityType.NPC_CLASS);
 		this.gp = gp;
 		imageUtility = new ImageUtility(gp);
 		this.setSpeed(1);

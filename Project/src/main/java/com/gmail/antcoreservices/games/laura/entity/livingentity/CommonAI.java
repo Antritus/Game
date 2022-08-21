@@ -1,13 +1,15 @@
 package com.gmail.antcoreservices.games.laura.entity.livingentity;
 
 import com.gmail.antcoreservices.games.laura.damage.Damage;
-import com.gmail.antcoreservices.games.laura.main.Direction;
+import com.gmail.antcoreservices.games.laura.entity.EntityType;
+import com.gmail.antcoreservices.games.laura.map.location.Direction;
 import com.gmail.antcoreservices.games.laura.main.GamePanel;
 
 import java.util.HashMap;
 import java.util.List;
 
 public abstract class CommonAI extends LivingEntity{
+    // FIXME: 16/08/2022 finish commonAI
     private boolean isAttacking;
     private boolean isHurt;
     private boolean isBeingHurt;
@@ -55,8 +57,8 @@ public abstract class CommonAI extends LivingEntity{
     }
 
 
-    public CommonAI(GamePanel gp) {
-        super(gp);
+    public CommonAI(GamePanel gp, EntityType entityClass) {
+        super(gp, entityClass);
     }
 
     public boolean isAttacking() {

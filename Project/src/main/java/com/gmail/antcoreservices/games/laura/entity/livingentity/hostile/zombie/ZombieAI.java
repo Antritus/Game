@@ -1,10 +1,12 @@
 package com.gmail.antcoreservices.games.laura.entity.livingentity.hostile.zombie;
 
 import com.gmail.antcoreservices.games.laura.damage.DamageElement;
+import com.gmail.antcoreservices.games.laura.entity.EntityType;
 import com.gmail.antcoreservices.games.laura.entity.livingentity.LivingEntity;
+import com.gmail.antcoreservices.games.laura.entity.livingentity.hostile.HostileEntity;
 import com.gmail.antcoreservices.games.laura.main.GamePanel;
 
-public class ZombieAI extends LivingEntity {
+public class ZombieAI extends HostileEntity {
 	GamePanel gp;
 	DamageElement damageElement;
 

@@ -13,7 +13,7 @@ public abstract class HostileEntity extends LivingEntity {
 	private int actionLockTime = 0;
 	
 	public HostileEntity(GamePanel gp) {
-		super(gp);
+		super(gp, EntityType.HOSTILE_CLASS);
 		this.gp = gp;
 	}
 	public void setAction() {

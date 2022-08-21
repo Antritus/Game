@@ -2,7 +2,7 @@ package com.gmail.antcoreservices.games.laura.entity.other;
 
 import com.gmail.antcoreservices.games.laura.entity.Entity;
 import com.gmail.antcoreservices.games.laura.entity.EntityType;
-import com.gmail.antcoreservices.games.laura.main.Direction;
+import com.gmail.antcoreservices.games.laura.map.location.Direction;
 import com.gmail.antcoreservices.games.laura.main.GamePanel;
 import com.gmail.antcoreservices.games.laura.util.ImageUtility;
 import com.gmail.antcoreservices.games.laura.map.Tile;

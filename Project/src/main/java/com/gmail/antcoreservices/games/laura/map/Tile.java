@@ -19,12 +19,15 @@ public class Tile {
 	public boolean collision = false;
 	public boolean liquid = false;
 	public boolean solid = false;
-
+	private String name = null;
+	public Tile(String name) {
+		this.name = name;
+	}
 	public Tile(TileMaterial tileMaterial, Biome biome){
 
 	}
-	public Tile(String tileNBT){
-
+	public String getName(){
+		return name;
 	}
 	public Biome getBiome(){
 		return new Biome(new int[]{10}, "");

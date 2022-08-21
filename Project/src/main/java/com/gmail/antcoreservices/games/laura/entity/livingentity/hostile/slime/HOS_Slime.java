@@ -1,6 +1,7 @@
 package com.gmail.antcoreservices.games.laura.entity.livingentity.hostile.slime;
 
-import com.gmail.antcoreservices.games.laura.main.Direction;
+import com.gmail.antcoreservices.games.laura.entity.EntityType;
+import com.gmail.antcoreservices.games.laura.map.location.Direction;
 import com.gmail.antcoreservices.games.laura.main.GamePanel;
 import com.gmail.antcoreservices.games.laura.util.ImageUtility;
 
@@ -9,7 +10,7 @@ import java.awt.*;
 public class HOS_Slime extends SlimeAI {
 	ImageUtility imageUtility;
 	public HOS_Slime(GamePanel gp) {
-		super(gp);
+		super(gp, EntityType.HOSTILE_CLASS);
 		this.gp = gp;
 		imageUtility = new ImageUtility(gp);
 		this.setName("Slime");

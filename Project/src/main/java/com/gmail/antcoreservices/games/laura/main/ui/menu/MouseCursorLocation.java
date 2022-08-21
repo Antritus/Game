@@ -1,6 +1,6 @@
 package com.gmail.antcoreservices.games.laura.main.ui.menu;
 
-import com.gmail.antcoreservices.games.laura.main.Direction;
+import com.gmail.antcoreservices.games.laura.map.location.Direction;
 import com.gmail.antcoreservices.games.laura.main.GamePanel;
 
 import java.awt.*;

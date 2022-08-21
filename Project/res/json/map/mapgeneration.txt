@@ -1,0 +1,17 @@
+# Antritus
+# Idea: 0
+# 17/8/22
+
+Creating chunk system,
+create a chunk system to load and unload map to save memory.
+Doing this will help the game to run better.
+
+Creating map
+
+
+start map at col 0, row 0
+but map size is 30 million x 30 million
+but, going to -30mil would be col -30mil
+going to +30mil would be +30mil
+
+

@@ -10,11 +10,9 @@ public class Tile {
     private final String name;
     private final Material material;
     private final BufferedImage tileImage;
-    private final int tileSize;
-    private final int worldX;
-    private final int worldY;
-
-    public Tile(TileTypes[] tileTypes, Material material, BufferedImage tileImage, double health, double maxHealth, int toughness, int tileSize, int worldX, int worldY) {
+    private int id;
+    private boolean isIDSet = false;
+    public Tile(TileTypes[] tileTypes, Material material, BufferedImage tileImage, double health, double maxHealth, int toughness) {
         this.tileTypes = tileTypes;
         boolean isDes = false, isSol = false, isLiq = false, isHoe = false, isPick = false;
         if (tileTypes != null) {
@@ -40,26 +38,22 @@ public class Tile {
         this.name = material.toString();
         this.material = material;
         this.tileImage = tileImage;
-        this.tileSize = tileSize;
-        this.worldX = worldX;
-        this.worldY = worldY;
-    }
 
+    }
+    protected void setID(int id){
+        if (isIDSet) {
+            return;
+        }
+        this.id = id;
+    }
     public Material getMaterial() {
         return material;
     }
     public String getName() {
         return name;
     }
-    public int getTileSize() {
-        return tileSize;
-    }
-    // todo: add way to get world x ( NO METHOD CURRENTLY TO UPDATE X)
-    public int getWorldX() {
-        return worldX;
-    }
-    public int getWorldY() {
-        return worldY;
+    public int getID(){
+        return id;
     }
     public TileProperties getTileProperties() {
         return tileProperties;

@@ -2,6 +2,7 @@ package com.gmail.antcoreservices.games.laura.main;
 
 import com.gmail.antcoreservices.games.laura.entity.Entity;
 import com.gmail.antcoreservices.games.laura.map.Tile;
+import com.gmail.antcoreservices.games.laura.map.location.Direction;
 
 import java.util.HashMap;
 

@@ -5,7 +5,7 @@ import com.gmail.antcoreservices.games.laura.damage.DamageCause;
 import com.gmail.antcoreservices.games.laura.damage.DamageElement;
 import com.gmail.antcoreservices.games.laura.entity.Entity;
 import com.gmail.antcoreservices.games.laura.entity.EntityType;
-import com.gmail.antcoreservices.games.laura.main.Direction;
+import com.gmail.antcoreservices.games.laura.map.location.Direction;
 import com.gmail.antcoreservices.games.laura.main.GamePanel;
 import org.jetbrains.annotations.NotNull;
 import com.gmail.antcoreservices.games.laura.map.Tile;
@@ -15,7 +15,8 @@ import java.util.ArrayList;
 
 public abstract class LivingEntity extends Entity {
 
-	protected double fov;// = 90.0; // fov is split to by 2 so it counts from 90.0 to 45.0, due to needing -45.0 angle and +45.0 angle
+	private final EntityType entityClass;
+	protected double fov;// = 90.0; // fov is split to by 2, so it counts from 90.0 to 45.0, due to needing -45.0 angle and +45.0 angle
 	protected double fovLength = 75; // length of pixels
 	protected double health = 100.0;
 	protected double maxHealth = 100.0;
@@ -42,9 +43,10 @@ public abstract class LivingEntity extends Entity {
 
 	private GamePanel gp;
 	
-	public LivingEntity(GamePanel gp) {
+	public LivingEntity(GamePanel gp, EntityType entityClass) {
 		super(gp);
 		this.gp = gp;
+		this.entityClass = entityClass;
 	}
 
 
@@ -369,4 +371,7 @@ public abstract class LivingEntity extends Entity {
 	public void drawFOV(Graphics2D g2) {
 	}
 
+	public EntityType getEntityClass() {
+		return entityClass;
+	}
 }

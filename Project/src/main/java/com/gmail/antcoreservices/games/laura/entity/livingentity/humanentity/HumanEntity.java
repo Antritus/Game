@@ -22,8 +22,8 @@ public abstract class HumanEntity extends LivingEntity {
 	private String[] dialogs = new String[20];
 	private String currentDialog;
 
-	public HumanEntity(GamePanel gp){
-		super(gp);
+	public HumanEntity(GamePanel gp, EntityType entityClass){
+		super(gp, entityClass);
 		this.skinSystem = new ImageUtility(gp);
 		this.gp = gp;
 	}

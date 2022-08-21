@@ -1,4 +1,4 @@
-package com.gmail.antcoreservices.games.laura.main;
+package com.gmail.antcoreservices.games.laura.map.location;
 
 
 public enum Direction {

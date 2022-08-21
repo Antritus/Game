@@ -1,6 +1,7 @@
-package com.gmail.antcoreservices.games.laura.map;
+package com.gmail.antcoreservices.games.laura.map.location;
 
 import com.gmail.antcoreservices.games.laura.main.*;
+import com.gmail.antcoreservices.games.laura.map.world.World;
 
 public class Location {
     private double x;

@@ -4,7 +4,7 @@ import com.gmail.antcoreservices.games.laura.entity.EntityType;
 import com.gmail.antcoreservices.games.laura.entity.livingentity.humanentity.HumanEntity;
 import com.gmail.antcoreservices.games.laura.entity.livingentity.humanentity.player.character.Character;
 import com.gmail.antcoreservices.games.laura.entity.livingentity.humanentity.player.character.skills.Skill;
-import com.gmail.antcoreservices.games.laura.main.Direction;
+import com.gmail.antcoreservices.games.laura.map.location.Direction;
 import com.gmail.antcoreservices.games.laura.main.GamePanel;
 import com.gmail.antcoreservices.games.laura.main.KeyHandler;
 import com.gmail.antcoreservices.games.laura.util.ImageUtility;
@@ -17,7 +17,7 @@ public class Player extends HumanEntity {
 	GamePanel gp;
 	KeyHandler keyH;
 	ImageUtility skinSystem;
-	public BufferedImage characterClassImage;
+	private BufferedImage characterClassImage;
 	private Character characterClass;
 	private Skill[] skills;
 	private boolean isGirl;
@@ -26,7 +26,7 @@ public class Player extends HumanEntity {
 
 
 	public Player(GamePanel gp, KeyHandler keyH, Character characterClass) {
-		super(gp);
+		super(gp, EntityType.PLAYER_CLASS);
 		this.gp = gp;
 		this.keyH = keyH;
 		this.characterClass = characterClass;
@@ -58,7 +58,7 @@ public class Player extends HumanEntity {
 		this.getSolidArea().height = 32;
 
 
-		isGirl = true;
+		isGirl = true; // todo: is girl outfit
 		this.setUpsideDown(false);
 		this.setSpeed(4);
 		this.setDirection(Direction.SOUTH);
