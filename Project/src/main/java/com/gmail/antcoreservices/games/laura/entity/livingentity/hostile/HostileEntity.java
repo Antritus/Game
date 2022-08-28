@@ -1,5 +1,6 @@
 package com.gmail.antcoreservices.games.laura.entity.livingentity.hostile;
 
+import com.gmail.antcoreservices.games.laura.entity.EntityClass;
 import com.gmail.antcoreservices.games.laura.entity.EntityType;
 import com.gmail.antcoreservices.games.laura.entity.livingentity.LivingEntity;
 import com.gmail.antcoreservices.games.laura.main.GamePanel;
@@ -15,6 +16,7 @@ public abstract class HostileEntity extends LivingEntity {
 	public HostileEntity(GamePanel gp) {
 		super(gp, EntityType.HOSTILE_CLASS);
 		this.gp = gp;
+		this.setEntityClass(EntityClass.HOSTILE_ENTITY);
 	}
 	public void setAction() {
 	}

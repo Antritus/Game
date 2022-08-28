@@ -1,12 +1,12 @@
 package com.gmail.antcoreservices.games.laura.main.tile.mapgeneration;
 
 import com.google.gson.*;
-import com.gmail.antcoreservices.games.laura.map.Tile;
+import com.gmail.antcoreservices.games.laura.map.TileOld;
 
 public class TileNBT {
-	private Tile tile;
+	private TileOld tile;
 
-	public TileNBT(Tile itemStack) {
+	public TileNBT(TileOld itemStack) {
 		this.tile = itemStack;
 	}
 
@@ -24,20 +24,20 @@ public class TileNBT {
 		return json;
 	}
 
-	public Tile getTileFromNBT(String nbt) {
+	public TileOld getTileFromNBT(String nbt) {
 		JsonElement jsonElement = JsonParser.parseString(nbt);
 		JsonObject jsonObject = jsonElement.getAsJsonObject();
 
-		Tile tile = new Tile("");
+		TileOld tile = new TileOld("");
 		tile.getBiome();
 		return tile;
 	}
 
-	public Tile getMaterialFromNBT(String nbt) {
+	public TileOld getMaterialFromNBT(String nbt) {
 		JsonElement jsonElement = JsonParser.parseString(nbt);
 		JsonObject jsonObject = jsonElement.getAsJsonObject();
 
-		return new Tile(jsonObject.getAsString());
+		return new TileOld(jsonObject.getAsString());
 	}
 
 }

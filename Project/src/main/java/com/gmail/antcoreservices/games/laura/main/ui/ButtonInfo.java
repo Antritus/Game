@@ -7,7 +7,10 @@ public enum ButtonInfo {
 	EXTRA_SMALL,
 	SMALL,
 	MEDIUM,
-	LARGE;
+	LARGE,
+
+	EXTRA_LARGE
+	;
 
 	public static int[] getButtonSize(GamePanel gp, ButtonInfo buttonInfo) {
 		int[] returnValues = new int[2];
@@ -23,6 +26,8 @@ public enum ButtonInfo {
 			returnValues[0] = 4*gp.getDefaultSettings().getTileSize();
 		} else if (buttonInfo == LARGE) {
 			returnValues[0] = 5*gp.getDefaultSettings().getTileSize();
+		} else if (buttonInfo == EXTRA_LARGE) {
+			returnValues[0] = 6*gp.getDefaultSettings().getTileSize();
 		}
 		return returnValues;
 	}

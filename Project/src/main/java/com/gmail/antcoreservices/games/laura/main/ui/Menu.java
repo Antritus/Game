@@ -3,6 +3,8 @@ package com.gmail.antcoreservices.games.laura.main.ui;
 import com.gmail.antcoreservices.games.laura.main.GamePanel;
 import com.gmail.antcoreservices.games.laura.main.settings.ControlSettingAssignment;
 import com.gmail.antcoreservices.games.laura.main.settings.ControlSettingTypes;
+import com.gmail.antcoreservices.games.laura.networking.GameClient;
+import com.gmail.antcoreservices.games.laura.networking.GameServer;
 import com.gmail.antcoreservices.games.laura.util.ImageUtility;
 
 import java.awt.*;
@@ -60,6 +62,7 @@ public class Menu {
 		}
 		if (gp.getGameState() == gp.getMainMenuState()){
 			if (actionIndex == 0) {
+				gp.setupGame();
 				gp.setGameState(gp.getPlayState());
 				//todo: start new save and save it (save games and load)
 			}
@@ -72,6 +75,21 @@ public class Menu {
 			}
 			if (actionIndex == 3) {
 				System.exit(0);
+			}
+			if (actionIndex == 998) {
+				System.out.println("STARTING");
+				GameServer server;
+				GameClient client;
+				server = new GameServer(gp);
+				server.start();
+				client = new GameClient(gp, "localhost");
+				client.start();
+				System.out.println("STARTED");
+
+				System.out.println("SENDING");
+				client.sendData("ping".getBytes());
+				System.out.println("SENT!");
+
 			}
 		} else if (gp.getGameState() == gp.getPauseState()) {
 			if (actionIndex == 0) {

@@ -5,7 +5,7 @@ import com.gmail.antcoreservices.games.laura.entity.EntityType;
 import com.gmail.antcoreservices.games.laura.map.location.Direction;
 import com.gmail.antcoreservices.games.laura.main.GamePanel;
 import com.gmail.antcoreservices.games.laura.util.ImageUtility;
-import com.gmail.antcoreservices.games.laura.map.Tile;
+import com.gmail.antcoreservices.games.laura.map.TileOld;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -72,7 +72,7 @@ public class Boat extends Entity {
 			} else {
 				this.setDirection(entity.getDirection());
 			}
-			if (entity.isCollisionOn(entity.getDirection()) == Tile.CollisionType.LIQUID && !addedSpeed) {
+			if (entity.isCollisionOn(entity.getDirection()) == TileOld.CollisionType.LIQUID && !addedSpeed) {
 				addedSpeed = true;
 				entity.setSpeed(getSpeed() + 2);
 			} else {

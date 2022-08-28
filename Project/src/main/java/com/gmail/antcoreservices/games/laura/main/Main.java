@@ -21,11 +21,12 @@ public class Main {
 		window.setLocationRelativeTo(null);
 		window.setVisible(true);
 
-		gamePanel.setupGame();
+		gamePanel.setGameState(gamePanel.getMainMenuState());
+//		gamePanel.setupGame();
 		defaultSettings = gamePanel.getDefaultSettings();
 
 
-		gamePanel.startFrameThread();
+		gamePanel.start();
 
 		window.setIconImage(Toolkit.getDefaultToolkit().getImage(Main.class.getResource("/entity/player/down.png")));
 	}

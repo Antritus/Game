@@ -36,9 +36,8 @@ public class WorldSprite {
         if (c + width >= image.getWidth() || r + height >= image.getHeight()){
             return null;
         }
-        System.out.println(c);
-        System.out.println(r);
-        System.out.println("");
+
+
         return image.getSubimage(c, r, width, height);
     }
 }

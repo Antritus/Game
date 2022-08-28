@@ -24,25 +24,31 @@ public class MainMenu extends Menu {
 		int x;
 		int y;
 
-		String text = "Game!!";
+		String text = gp.getDefaultSettings().getName();
+
 		textLength = (int) g2.getFontMetrics().getStringBounds(text, g2).getWidth();
 
 		x = gp.getDefaultSettings().getScreenWidth() / 2 - textLength / 2;
-		y = gp.getDefaultSettings().getScreenHeight() / 2 - 200;
+		y = 150;
 		g2.setColor(Color.DARK_GRAY);
 		g2.setColor(new Color(42, 0, 0));
-		g2.drawString(text, x + 5, y + 5);
+		g2.drawString(text, x + 4, y + 4);
 		g2.setColor(new Color(170, 0, 0));
 		g2.drawString(text, x, y);
 
 		x = gp.getDefaultSettings().getScreenWidth() / 2 - 450;
 		y = gp.getDefaultSettings().getScreenHeight() / 2 - 30;
-		drawButton(gp, g2, "New Game", x, y, ButtonInfo.MEDIUM,0);
-		drawButton(gp, g2, "Load Game", x, y+70, ButtonInfo.MEDIUM,1);
-		drawButton(gp, g2, "Settings", x, y+(70*2), ButtonInfo.MEDIUM,2);
-		drawButton(gp, g2, "Quit", x, y+(70*3), ButtonInfo.MEDIUM,3);
+		y = gp.getDefaultSettings().getScreenHeight();
+		int h = 80;
+		drawButton(gp, g2, "Quit", 40, y-h, ButtonInfo.MEDIUM,3);
+		drawButton(gp, g2, "Settings", 40, y-(h)-70, ButtonInfo.MEDIUM,2);
+		drawButton(gp, g2, "Load Game", 40, y-(h)-70*2, ButtonInfo.MEDIUM,1);
+		drawButton(gp, g2, "New Game", 40, y-(h)-70*3, ButtonInfo.MEDIUM,0);
+		g2.setColor(Color.RED);
+		drawButton(gp, g2, "Network test #Debug#Error", gp.getDefaultSettings().getScreenWidth()-40-ButtonInfo.getButtonSize(gp, ButtonInfo.EXTRA_LARGE)[0], y-h, ButtonInfo.EXTRA_LARGE,998);
 
 
+		/*
 		x = gp.getDefaultSettings().getScreenWidth() - 270;
 		y = 85;
 		int width = gp.getDefaultSettings().getScreenWidth() - x+20;
@@ -62,6 +68,8 @@ public class MainMenu extends Menu {
 		g2.setFont(g2.getFont().deriveFont(20f));
 		text = "Class: " + gp.player.getCharacterClass().getCharacterClassName() + " " + gp.player.getLevel();
 		g2.drawString(text, x+7 ,y+40);
+
+		 */
 
 //		if ((!gp.keyHandler.hasMouseMoved() && mainMenuSlot == MainMenuSlot.NEW_GAME) || (gp.keyHandler.hasMouseMoved() && gp.keyHandler.isInsideRectangle(x, y - height, width, height))) {
 //

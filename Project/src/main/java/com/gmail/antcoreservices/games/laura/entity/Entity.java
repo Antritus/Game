@@ -1,9 +1,9 @@
 package com.gmail.antcoreservices.games.laura.entity;
 
 import com.gmail.antcoreservices.games.laura.entity.other.Boat;
-import com.gmail.antcoreservices.games.laura.map.location.Direction;
 import com.gmail.antcoreservices.games.laura.main.GamePanel;
-import com.gmail.antcoreservices.games.laura.map.Tile;
+import com.gmail.antcoreservices.games.laura.map.TileOld;
+import com.gmail.antcoreservices.games.laura.map.location.Direction;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -11,7 +11,6 @@ import java.util.HashMap;
 import java.util.UUID;
 
 public abstract class Entity {
-	// FIXME: 15/08/2022 § Image folder requires fixes ( PATH )
 	private int tick = 0;
 	private void tick() {}
 	GamePanel gp;
@@ -30,10 +29,11 @@ public abstract class Entity {
 	 * Main com.gmail.antcoreservices.games.laura.entity
 	 */
 
+	private EntityClass entityClass = EntityClass.ENTITY;
 	protected EntityType entityType;
 	private final UUID uuid = UUID.randomUUID();
 	private Direction direction;
-	public BufferedImage up1, up2, down1, down2, right1, right2, left1, left2;
+	public BufferedImage currentImage, up1, up2, down1, down2, right1, right2, left1, left2;
 	private boolean isMoving = false;
 	private int worldX;
 	private int worldY;
@@ -41,12 +41,21 @@ public abstract class Entity {
 	public int screenX;
 	public int screenY;
 
+	private boolean isVisible = true;
+
 
 	private boolean showCustomDisplayName = false;
 	private String customDisplayName = null;
 	private String name = null;
 
 	private boolean upsideDown = false; // this is only to have fun!
+
+	public BufferedImage getCurrentImage() {
+		return currentImage;
+	}
+	protected void updateCurrentImage(BufferedImage bufferedImage) {
+		this.currentImage = bufferedImage;
+	}
 
 
 	public EntityType getType() {
@@ -119,6 +128,29 @@ public abstract class Entity {
 			}
 		}
 		return null;
+	}
+
+	/*
+	public Entity getEntity(UUID uuid, World world) {
+		for (Entity entity : gp.getWorld(world).getEntities()){
+			if (entity.getUUID() == uuid) {
+
+			}
+		}
+	}
+*/
+
+
+	public boolean equals(Entity entity) {
+		if (entity.getUUID() == this.getUUID()){
+			return true;
+		}
+		return false;
+	}
+
+	@Override
+	public String toString() {
+		return this.entityType.toString();
 	}
 
 	/*
@@ -204,9 +236,9 @@ public abstract class Entity {
 	}
 
 	private Rectangle solidArea;
-	private final HashMap<Direction, Tile.CollisionType> collision = new HashMap<>();
+	private final HashMap<Direction, TileOld.CollisionType> collision = new HashMap<>();
 
-	public Tile.CollisionType isCollisionOn(Direction direction) {
+	public TileOld.CollisionType isCollisionOn(Direction direction) {
 		return collision.get(direction);
 	}
 
@@ -238,11 +270,11 @@ public abstract class Entity {
 		this.hasCollision = hasCollision;
 	}
 
-	public void setCollisionOn(Direction direction, Tile.CollisionType collision) {
+	public void setCollisionOn(Direction direction, TileOld.CollisionType collision) {
 		this.collision.put(direction, collision);
 	}
 
-	public void setCollisionOn(Tile.CollisionType collision) {
+	public void setCollisionOn(TileOld.CollisionType collision) {
 		this.collision.put(Direction.NORTH, collision);
 		this.collision.put(Direction.SOUTH, collision);
 		this.collision.put(Direction.SOUTH_EAST, collision);
@@ -289,7 +321,7 @@ public abstract class Entity {
 	}
 
 
-	public boolean isColliding(Direction direction, Tile.CollisionType collisionType) {
+	public boolean isColliding(Direction direction, TileOld.CollisionType collisionType) {
 		return isCollisionOn(direction) != collisionType;
 	}
 
@@ -324,5 +356,19 @@ public abstract class Entity {
 	}
 
 
+	public EntityClass getEntityClass() {
+		return entityClass;
+	}
 
+	public void setEntityClass(EntityClass entityClass) {
+		this.entityClass = entityClass;
+	}
+
+	public boolean isVisible() {
+		return isVisible;
+	}
+
+	public void setVisible(boolean visible) {
+		isVisible = visible;
+	}
 }

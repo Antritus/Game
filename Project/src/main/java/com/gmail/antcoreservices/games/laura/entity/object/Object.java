@@ -1,6 +1,7 @@
 package com.gmail.antcoreservices.games.laura.entity.object;
 
 import com.gmail.antcoreservices.games.laura.entity.Entity;
+import com.gmail.antcoreservices.games.laura.entity.EntityClass;
 import com.gmail.antcoreservices.games.laura.main.GamePanel;
 
 import java.awt.*;
@@ -11,6 +12,9 @@ public class Object extends Entity {
   public Object(GamePanel gp) {
     super(gp);
     this.gp = gp;
+	this.setEntityClass(EntityClass.OBJECT);
+
+	this.currentImage = image;
   }
 	private BufferedImage image, image2, image3, image4, image5, image6;
 

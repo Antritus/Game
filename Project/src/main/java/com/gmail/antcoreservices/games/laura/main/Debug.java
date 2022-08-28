@@ -31,6 +31,23 @@ public class Debug {
 		list.add("Mouse Scroll Wheel Total: " + gp.getKeyHandler().mouseScrollAmountTotal);
 		list.add("");
 
+
+		list.add("World Name: Todo");
+		list.add("World Col: Todo");
+		list.add("World Row: Todo");
+		list.add("World Layers: Todo");
+		list.add("");
+		int x = 5;
+		int y = 20;
+		int add = 20;
+		for (String v : list) {
+			g2.drawString(v, x, y);
+			y+=add;
+		}
+
+		list.clear();
+
+
 		list.add("Player Health: " + gp.player.getHealth());
 		list.add("Player Max Health: " + gp.player.getMaxHealth());
 		list.add("Player Health Percentage: " + gp.player.getHealthPercentage());
@@ -43,10 +60,10 @@ public class Debug {
 		list.add("Player Col: Todo");
 		list.add("Player Row: Todo");
 		list.add("");
-		int x = 5;
-		int y = 20;
-		int add = 20;
+
+		y = 20;
 		for (String v : list) {
+			x = gp.getDefaultSettings().getScreenWidth() - (int) g2.getFontMetrics().getStringBounds(v, g2).getWidth() - 5;
 			g2.drawString(v, x, y);
 			y+=add;
 		}

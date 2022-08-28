@@ -1,6 +1,7 @@
-package com.gmail.antcoreservices.games.laura.map.tile;
+package com.gmail.antcoreservices.games.laura.map.tile.types;
 
 import com.gmail.antcoreservices.games.laura.main.Material;
+import com.gmail.antcoreservices.games.laura.map.tile.TileProperties;
 
 import java.awt.image.BufferedImage;
 

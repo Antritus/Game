@@ -5,7 +5,7 @@ import com.gmail.antcoreservices.games.laura.main.tile.mapgeneration.Biome;
 
 import java.awt.image.BufferedImage;
 
-public class Tile {
+public class TileOld {
 
 	public enum CollisionType {
 		NONE,
@@ -20,10 +20,10 @@ public class Tile {
 	public boolean liquid = false;
 	public boolean solid = false;
 	private String name = null;
-	public Tile(String name) {
+	public TileOld(String name) {
 		this.name = name;
 	}
-	public Tile(TileMaterial tileMaterial, Biome biome){
+	public TileOld(TileMaterial tileMaterial, Biome biome){
 
 	}
 	public String getName(){

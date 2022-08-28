@@ -31,7 +31,7 @@ public class Chunk {
         this.maxCol = maxCol;
         this.startRow = startRow;
         this.maxRow = maxRow;
-        tiles = new Tile[layers][maxCol][maxRow];
+        tiles = new Tile[16][16][16];
     }
     public Chunk(BufferedImage bufferedImage, double startX, double startY, double endX, double endY, int startCol, int maxCol, int startRow, int maxRow) {
         this.image = bufferedImage;

@@ -8,6 +8,9 @@ import com.gmail.antcoreservices.games.laura.entity.livingentity.humanentity.pla
 import com.gmail.antcoreservices.games.laura.main.settings.ControlSettings;
 import com.gmail.antcoreservices.games.laura.main.ui.UISystem;
 import com.gmail.antcoreservices.games.laura.map.TileManager;
+import com.gmail.antcoreservices.games.laura.map.world.World;
+import com.gmail.antcoreservices.games.laura.networking.GameClient;
+import com.gmail.antcoreservices.games.laura.networking.GameServer;
 import com.gmail.antcoreservices.games.laura.util.ImageUtility;
 
 import javax.swing.*;
@@ -28,8 +31,11 @@ public class GamePanel extends JPanel implements Runnable {
 	Sound music = new Sound();
 	Sound soundEffect = new Sound();
 	private Thread gameThread;
+	private World world;
 
 	private final DefaultSettings defaultSettings;
+	private boolean running;
+
 	public DefaultSettings getDefaultSettings(){
 		return defaultSettings;
 	}
@@ -52,7 +58,9 @@ public class GamePanel extends JPanel implements Runnable {
 	public KeyHandler getKeyHandler(){return keyHandler;}
 	public Debug getDebugKeyHandler() {return debug;}
 
-	public Account account = new Account("(AC) Antritus", 123, UUID.randomUUID());
+	public Account account = new Account("(AC) " + "Antritus", 123, UUID.randomUUID());
+	private GameClient client;
+	private GameServer server;
 
 
 	private Entity[] entities = new Entity[1000];
@@ -127,6 +135,7 @@ public class GamePanel extends JPanel implements Runnable {
 
 
 	public GamePanel(DefaultSettings defaultSettings) {
+		System.out.println("TOCK GP");
 		this.defaultSettings = defaultSettings;
 		debug = new Debug(this);
 		/*
@@ -160,6 +169,7 @@ public class GamePanel extends JPanel implements Runnable {
 		this.addMouseMotionListener(keyHandler);
 		this.addMouseWheelListener(keyHandler);
 		this.setFocusable(true);
+
 	}
 	/*
 	public void zoomInOut(int i) {
@@ -190,10 +200,6 @@ public class GamePanel extends JPanel implements Runnable {
 	public boolean isDebuggingOn() {
 		return this.getDefaultSettings().isDebuggingOn();
 	}
-	public void startFrameThread() {
-		gameThread = new Thread(this);
-		gameThread.start();
-	}
 	public void setupGame() {
 		tileM = new TileManager(this);
 		assetSetter = new AssetSetter(this);
@@ -206,8 +212,19 @@ public class GamePanel extends JPanel implements Runnable {
 		setGameState(GameState.MAIN_MENU);
 	}
 	private boolean allowPainting = false;
+
+	public synchronized void start() {
+		running = true;
+		gameThread = new Thread(this);
+		gameThread.start();
+
+	}
+	public synchronized void stop() {
+		running = false;
+	}
 	@Override
 	public void run() {
+
 		double drawInterval = 1000000000 / FPS;
 		double delta = 0;
 		long lastTime = System.nanoTime();
@@ -216,6 +233,9 @@ public class GamePanel extends JPanel implements Runnable {
 		int drawCount = 0;
 		int allowPaitingCount = 0;
 		while (gameThread != null) {
+			if (!running) {
+				break;
+			}
 			currentTime = System.nanoTime();
 			delta += (currentTime - lastTime) / drawInterval;
 			timer += (currentTime - lastTime);
@@ -232,12 +252,11 @@ public class GamePanel extends JPanel implements Runnable {
 				timer = 0;
 				allowPaitingCount++;
 			}
-			if (allowPaitingCount == 1) {
-				allowPainting =true;
-			}
+			allowPainting = true;
 		}
 	}
 	public void update() {
+
 		if (gameState == playState) {
 			// Player
 			player.update();

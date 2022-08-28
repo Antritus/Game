@@ -4,7 +4,7 @@ import com.gmail.antcoreservices.games.laura.entity.EntityType;
 import com.gmail.antcoreservices.games.laura.entity.livingentity.LivingEntity;
 import com.gmail.antcoreservices.games.laura.main.GamePanel;
 import com.gmail.antcoreservices.games.laura.util.ImageUtility;
-import com.gmail.antcoreservices.games.laura.map.Tile;
+import com.gmail.antcoreservices.games.laura.map.TileOld;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -34,7 +34,7 @@ public abstract class HumanEntity extends LivingEntity {
 		superClasses();
 		setAction();
 		// Check tile collision
-		setCollisionOn(Tile.CollisionType.NONE);
+		setCollisionOn(TileOld.CollisionType.NONE);
 		gp.getCollisionChecker().checkTile(this);
 		gp.getCollisionChecker().checkObject(this, false);
 		gp.getCollisionChecker().checkEntity(this, gp.npc);

@@ -4,11 +4,12 @@ import com.gmail.antcoreservices.games.laura.damage.Damage;
 import com.gmail.antcoreservices.games.laura.damage.DamageCause;
 import com.gmail.antcoreservices.games.laura.damage.DamageElement;
 import com.gmail.antcoreservices.games.laura.entity.Entity;
+import com.gmail.antcoreservices.games.laura.entity.EntityClass;
 import com.gmail.antcoreservices.games.laura.entity.EntityType;
 import com.gmail.antcoreservices.games.laura.map.location.Direction;
 import com.gmail.antcoreservices.games.laura.main.GamePanel;
 import org.jetbrains.annotations.NotNull;
-import com.gmail.antcoreservices.games.laura.map.Tile;
+import com.gmail.antcoreservices.games.laura.map.TileOld;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -47,6 +48,7 @@ public abstract class LivingEntity extends Entity {
 		super(gp);
 		this.gp = gp;
 		this.entityClass = entityClass;
+		this.setEntityClass(EntityClass.LIVING_ENTITY);
 	}
 
 
@@ -231,16 +233,16 @@ public abstract class LivingEntity extends Entity {
 	}
 
 	public void updateCollisions(Direction direction) {
-		if (!isColliding(direction, Tile.CollisionType.BLOCKER)) {
+		if (!isColliding(direction, TileOld.CollisionType.BLOCKER)) {
 			setCollidingTile(true);
 		}
-		if (!isColliding(direction, Tile.CollisionType.NPC)) {
+		if (!isColliding(direction, TileOld.CollisionType.NPC)) {
 			setCollidingNPC(true);
 		}
-		if (!isColliding(direction, Tile.CollisionType.OBJECT)) {
+		if (!isColliding(direction, TileOld.CollisionType.OBJECT)) {
 			setCollidingObject(true);
 		}
-		if (!isColliding(direction, Tile.CollisionType.PLAYER)) {
+		if (!isColliding(direction, TileOld.CollisionType.PLAYER)) {
 			setCollidingPlayer(true);
 		}
 	}
@@ -248,8 +250,8 @@ public abstract class LivingEntity extends Entity {
 	public void move(int amount, boolean multiInputMovement) {
 		if (multiInputMovement) {
 			if (getDirection() == Direction.NORTH_EAST || getDirection() == Direction.NORTH_WEST) {
-				if (isColliding(Direction.NORTH, Tile.CollisionType.BLOCKER) && isColliding(Direction.NORTH, Tile.CollisionType.NPC) &&
-						isColliding(Direction.NORTH, Tile.CollisionType.OBJECT) && isColliding(Direction.NORTH, Tile.CollisionType.PLAYER)) {
+				if (isColliding(Direction.NORTH, TileOld.CollisionType.BLOCKER) && isColliding(Direction.NORTH, TileOld.CollisionType.NPC) &&
+						isColliding(Direction.NORTH, TileOld.CollisionType.OBJECT) && isColliding(Direction.NORTH, TileOld.CollisionType.PLAYER)) {
 					this.setCollidingTile(false);
 					this.setCollidingPlayer(false);
 					this.setCollidingNPC(false);
@@ -266,10 +268,10 @@ public abstract class LivingEntity extends Entity {
 				if (getDirection() == Direction.NORTH_EAST) {
 					directionNew = Direction.WEST;
 				}
-				if (isColliding(directionNew, Tile.CollisionType.BLOCKER) &&
-						isColliding(directionNew, Tile.CollisionType.NPC) &&
-						isColliding(directionNew, Tile.CollisionType.OBJECT)
-						&& isColliding(directionNew, Tile.CollisionType.PLAYER)) {
+				if (isColliding(directionNew, TileOld.CollisionType.BLOCKER) &&
+						isColliding(directionNew, TileOld.CollisionType.NPC) &&
+						isColliding(directionNew, TileOld.CollisionType.OBJECT)
+						&& isColliding(directionNew, TileOld.CollisionType.PLAYER)) {
 					this.setCollidingTile(false);
 					this.setCollidingPlayer(false);
 					this.setCollidingNPC(false);
@@ -282,8 +284,8 @@ public abstract class LivingEntity extends Entity {
 
 			}
 			if (getDirection() == Direction.SOUTH_EAST || getDirection() == Direction.SOUTH_WEST) {
-				if (isColliding(Direction.SOUTH, Tile.CollisionType.BLOCKER) && isColliding(Direction.SOUTH, Tile.CollisionType.NPC) &&
-						isColliding(Direction.SOUTH, Tile.CollisionType.OBJECT) && isColliding(Direction.SOUTH, Tile.CollisionType.PLAYER)) {
+				if (isColliding(Direction.SOUTH, TileOld.CollisionType.BLOCKER) && isColliding(Direction.SOUTH, TileOld.CollisionType.NPC) &&
+						isColliding(Direction.SOUTH, TileOld.CollisionType.OBJECT) && isColliding(Direction.SOUTH, TileOld.CollisionType.PLAYER)) {
 					this.setCollidingTile(false);
 					this.setCollidingPlayer(false);
 					this.setCollidingNPC(false);
@@ -300,10 +302,10 @@ public abstract class LivingEntity extends Entity {
 				if (getDirection() == Direction.SOUTH_EAST) {
 					directionNew = Direction.WEST;
 				}
-				if (isColliding(directionNew, Tile.CollisionType.BLOCKER) &&
-						isColliding(directionNew, Tile.CollisionType.NPC) &&
-						isColliding(directionNew, Tile.CollisionType.OBJECT)
-						&& isColliding(directionNew, Tile.CollisionType.PLAYER)) {
+				if (isColliding(directionNew, TileOld.CollisionType.BLOCKER) &&
+						isColliding(directionNew, TileOld.CollisionType.NPC) &&
+						isColliding(directionNew, TileOld.CollisionType.OBJECT)
+						&& isColliding(directionNew, TileOld.CollisionType.PLAYER)) {
 					this.setCollidingTile(false);
 					this.setCollidingPlayer(false);
 					this.setCollidingNPC(false);
@@ -314,8 +316,8 @@ public abstract class LivingEntity extends Entity {
 				}
 			}
 		}
-		if (isColliding(getDirection(), Tile.CollisionType.BLOCKER) && isColliding(getDirection(), Tile.CollisionType.NPC) &&
-				isColliding(getDirection(), Tile.CollisionType.OBJECT) && isColliding(getDirection(), Tile.CollisionType.PLAYER)) {
+		if (isColliding(getDirection(), TileOld.CollisionType.BLOCKER) && isColliding(getDirection(), TileOld.CollisionType.NPC) &&
+				isColliding(getDirection(), TileOld.CollisionType.OBJECT) && isColliding(getDirection(), TileOld.CollisionType.PLAYER)) {
 			this.setCollidingTile(false);
 			this.setCollidingPlayer(false);
 			this.setCollidingNPC(false);
@@ -371,7 +373,7 @@ public abstract class LivingEntity extends Entity {
 	public void drawFOV(Graphics2D g2) {
 	}
 
-	public EntityType getEntityClass() {
+	public EntityType getEntityType() {
 		return entityClass;
 	}
 }

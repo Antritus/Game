@@ -1,5 +1,6 @@
 package com.gmail.antcoreservices.games.laura.entity.livingentity.humanentity.player;
 
+import com.gmail.antcoreservices.games.laura.entity.EntityClass;
 import com.gmail.antcoreservices.games.laura.entity.EntityType;
 import com.gmail.antcoreservices.games.laura.entity.livingentity.humanentity.HumanEntity;
 import com.gmail.antcoreservices.games.laura.entity.livingentity.humanentity.player.character.Character;
@@ -8,7 +9,7 @@ import com.gmail.antcoreservices.games.laura.map.location.Direction;
 import com.gmail.antcoreservices.games.laura.main.GamePanel;
 import com.gmail.antcoreservices.games.laura.main.KeyHandler;
 import com.gmail.antcoreservices.games.laura.util.ImageUtility;
-import com.gmail.antcoreservices.games.laura.map.Tile;
+import com.gmail.antcoreservices.games.laura.map.TileOld;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -30,6 +31,7 @@ public class Player extends HumanEntity {
 		this.gp = gp;
 		this.keyH = keyH;
 		this.characterClass = characterClass;
+		this.setEntityClass(EntityClass.PLAYER);
 		skinSystem = new ImageUtility(gp);
 
 
@@ -46,7 +48,7 @@ public class Player extends HumanEntity {
 		this.setUpsideDown(false);
 		this.setHasCollision(true);
 		this.entityType = EntityType.PLAYER;
-		this.setCollisionOn(Tile.CollisionType.NONE);
+		this.setCollisionOn(TileOld.CollisionType.NONE);
 		setX(gp.getDefaultSettings().getTileSize() * 1);
 		setY(gp.getDefaultSettings().getTileSize() * 1);
 		this.setSolidArea(new Rectangle());
@@ -117,7 +119,7 @@ public class Player extends HumanEntity {
 
 
 			// Check tile collision
-			setCollisionOn(Tile.CollisionType.NONE);
+			setCollisionOn(TileOld.CollisionType.NONE);
 			gp.getCollisionChecker().checkTile(this);
 
 			// Check com.gmail.antcoreservices.games.laura.object collision (com.gmail.antcoreservices.games.laura.object = com.gmail.antcoreservices.games.laura.item)

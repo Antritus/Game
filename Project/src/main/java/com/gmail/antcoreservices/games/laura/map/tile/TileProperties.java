@@ -1,7 +1,6 @@
 package com.gmail.antcoreservices.games.laura.map.tile;
 
 public class TileProperties {
-    private final TileDamageProperties tileDamageProperties;
     private final double maxHealth;
     private final int toughness;
 
@@ -11,21 +10,15 @@ public class TileProperties {
     private boolean isLiquid;
     private boolean isHoeable;
     private boolean isPickable;
-
-    public TileProperties(double maxHealth, double health, int toughness, boolean isDestructible, boolean isSolid, boolean isLiquid, boolean isHoeable, boolean isPickable, TileDamageProperties tileDamageProperties) {
+    public TileProperties(double maxHealth, double health, int toughness, boolean isDestructible, boolean isSolid, boolean isLiquid, boolean isHoeable, boolean isPickable) {
         this.health = health;
         this.isDestructible = isDestructible;
         this.isSolid = isSolid;
         this.isLiquid = isLiquid;
         this.isHoeable = isHoeable;
         this.isPickable = isPickable;
-        this.tileDamageProperties = tileDamageProperties;
         this.toughness = toughness;
         this.maxHealth = maxHealth;
-    }
-
-    public TileDamageProperties getTileDamageProperties() {
-        return tileDamageProperties;
     }
 
     public boolean isPickable() {

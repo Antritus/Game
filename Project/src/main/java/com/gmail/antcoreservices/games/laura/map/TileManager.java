@@ -2,6 +2,7 @@ package com.gmail.antcoreservices.games.laura.map;
 
 import com.gmail.antcoreservices.games.laura.main.DefaultSettings;
 import com.gmail.antcoreservices.games.laura.main.GamePanel;
+import com.gmail.antcoreservices.games.laura.map.world.World;
 import com.gmail.antcoreservices.games.laura.util.ImageUtility;
 
 import javax.imageio.ImageIO;
@@ -18,7 +19,7 @@ public class TileManager {
 
 	GamePanel gp;
 	ImageUtility imageUtility;
-	public Tile[] tile;
+	public TileOld[] tile;
 	public int mapTileNumber[][];
 	private BufferedImage[][] mapTile;
 
@@ -26,24 +27,29 @@ public class TileManager {
 		return mapTileNumber;
 	}
 
+	World world;
 	public TileManager(GamePanel gp){
 		this.gp = gp;
+		world = new World(gp,"world", true);
 		this.imageUtility = new ImageUtility(gp);
-		tile = new Tile[1000];
+		tile = new TileOld[1000];
 //		mapTile = new BufferedImage[gp.getDefaultSettings().getMaxWorldCol()][gp.getDefaultSettings().getMaxWorldRow()];
 		mapTile = new BufferedImage[5000][5000];
+
+		getTileImage();
+//		loadImageMap("/mapimage/Default", 10);
 //		TileManager tileManager = new TileManager(new GamePanel(new DefaultSettings()));
-		loadImageMap("/mapimage/generatedMap1", 10);
+//		loadImageMap("/mapimage/generatedMap1", 10);
 
 
 //		mapTileNumber = new int[gp.getDefaultSettings().getMaxWorldCol()][gp.getDefaultSettings().getMaxWorldRow()];
 
-		getTileImage();
+//		getTileImage();
 
-		loadMap("map_dev_random_generation/random_map_debug_01");
+//		loadMap("map_dev_random_generation/random_map_debug_01");
 
 
-		loadWater();
+//		loadWater();
 	}
 	public boolean isSolid(int tile) {
 		return this.tile[tile].collision;
@@ -73,7 +79,7 @@ public class TileManager {
 	public void setup(int i, String image, boolean collision, boolean liquid) {
 		try {
 			String location = "/tiles/";
-			tile[i] = new Tile(image);
+			tile[i] = new TileOld(image);
 			tile[i].image = ImageIO.read(getClass().getResourceAsStream(location + image + ".png"));
 			tile[i].image = imageUtility.scale(tile[i].image, gp.getDefaultSettings().getTileSize(), gp.getDefaultSettings().getTileSize());
 			tile[i].liquid = liquid;
@@ -96,12 +102,11 @@ public class TileManager {
 	}
 	public static void main(String[] a) {
 		TileManager tileManager = new TileManager(new GamePanel(new DefaultSettings()));
-		tileManager.loadImageMap("/mapimage/generatedMap1", 10);
+		tileManager.loadImageMap("/mapimage/Default", 10);
 	}
 	public void loadImageMap(String map, int pixelSize) {
-		System.out.println(" 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0");
 		try {
-			BufferedImage imBuff = ImageIO.read(getClass().getResourceAsStream("/maps/" + map + ".png"));
+			BufferedImage imBuff = ImageIO.read(getClass().getResourceAsStream("/maps/mapimage/Default.png"));
 			int col = 0;
 			int row = 0;
 			mapTileNumber = new int[imBuff.getHeight()/pixelSize][imBuff.getWidth()/pixelSize];
@@ -115,10 +120,8 @@ public class TileManager {
 			gp.getDefaultSettings().setMaxWorldCol(30005/10);
 			gp.getDefaultSettings().setMaxWorldRow(30006/10);
 			System.out.printf("LOADING MAP: %s, PIXELS W: %s2, PIXEL H: %s3, PIXEL S: %s4, PIXEL W/SIZE: %s5, PIXEL H/SIZE: %s6", map, maxCol, maxRow, pixelSize, maxCol, maxRow);
-			System.out.println("");
 			while (col < maxCol && row < maxRow){
 				while (col<maxCol) {
-					System.out.println(row + "" + col);
 					Color c = new Color(imBuff.getRGB(col, row));
 					int tileID;
 					if (c.equals(new Color(1, 38, 119))){//Deep Ocean
@@ -155,7 +158,6 @@ public class TileManager {
 //					mapTileNumber[row/][col] = tileID;
 					col+=pixelSize;
 				}
-				System.out.println(row - 10 + "" + v);
 				if (row/pixelSize <= -1) {
 					values.put(0, v);
 				} else {
@@ -165,11 +167,9 @@ public class TileManager {
 				col = 0;
 				row+=pixelSize;
 			}
-			System.out.println(values.get(0));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		System.out.println(map);
 	}
 
 	public void loadMap(String map) {
@@ -229,9 +229,7 @@ public class TileManager {
 					int tileNumLeft = mapTileNumber[worldCol - 1][worldRow];
 					left = tile[tileNumLeft].liquid;
 				}
-				System.out.println("\nTile Col: " + worldCol + "Tile Row: " + worldRow + "\nUp: " + up + " Down: " + down + " Right: " + right + " Left: " + left);
 				String value = (up + " "+ down + " " + right + " "+ left);
-				System.out.println(value);
 //				if (up == true) {
 //					tile[tileNum].image = setupWater("/debug/up");
 //				}
@@ -258,10 +256,10 @@ public class TileManager {
 						worldX - gp.getDefaultSettings().getTileSize()< gp.player.getX() + gp.player.screenX &&
 						worldY + gp.getDefaultSettings().getTileSize()> gp.player.getY() - gp.player.screenY &&
 						worldY - gp.getDefaultSettings().getTileSize()< gp.player.getY() + gp.player.screenY) {
-					g2.drawImage(tile[tileNum].image, screenX, screenY, null);
-//					System.out.println(tile[tileNum].getName() + " | " + tileNum);
-//					System.out.println(worldCol + " | " + worldRow);
+					g2.drawImage(tile[1].image, screenX, screenY, null);
+//					g2.drawImage(tile[tileNum].image, screenX, screenY, null);
 				}
+			g2.drawImage(tile[1].image, screenX, screenY, null);
 				worldCol++;
 			if (worldCol == gp.getDefaultSettings().getMaxWorldCol()) {
 				worldCol = 0;

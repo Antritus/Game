@@ -1,5 +1,6 @@
 package com.gmail.antcoreservices.games.laura.entity.livingentity.humanentity.npc;
 
+import com.gmail.antcoreservices.games.laura.entity.EntityClass;
 import com.gmail.antcoreservices.games.laura.entity.EntityType;
 import com.gmail.antcoreservices.games.laura.entity.livingentity.humanentity.HumanEntity;
 import com.gmail.antcoreservices.games.laura.map.location.Direction;
@@ -25,6 +26,7 @@ public class NPC_OldMan extends HumanEntity {
 //		this.setSolidAreaDefaultY(getSolidArea().y);
 		this.getSolidArea().width = 32;
 		this.getSolidArea().height = 32;
+		this.setEntityClass(EntityClass.NPC);
 		getNPCImage();
 		setDefaultValues();
 	}

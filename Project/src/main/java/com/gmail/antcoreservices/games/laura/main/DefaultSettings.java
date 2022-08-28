@@ -6,8 +6,8 @@ public class DefaultSettings {
     private final int scale = 4;
 
     private int tileSize = originalTileSize * scale; // 48x48
-    private int  maxScreenCol = 24;
-    private int maxScreenRow = 20;
+    private int  maxScreenCol = 14;
+    private int maxScreenRow = 10;
     private int screenWidth = tileSize *  maxScreenCol;//768
     private int screenHeight = tileSize * maxScreenRow;//576
     // world settings
@@ -17,8 +17,16 @@ public class DefaultSettings {
     private boolean isDebuggingOn = false;
 
     // App name
-    private String name = "Laura";
-
+    private final boolean isDevelopment = true;
+    private String name;
+    {
+        if (isDevelopment) {
+            name = "Laura - Development";
+        } else {
+            name = "Laura";
+            name = "Laura";
+        }
+    }
     public DefaultSettings() {}
 
     private void updateTileSize() {this.tileSize = originalTileSize*scale;}
@@ -102,5 +110,8 @@ public class DefaultSettings {
     }
     public int getScale() {
         return scale;
+    }
+    public int getOriginalTileSize() {
+        return originalTileSize;
     }
 }
