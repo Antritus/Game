@@ -142,8 +142,14 @@ public class UISystem {
 			drawDialogScreen();
 			return;
 		}
+		g2.setFont(arial_40.deriveFont(25.0f));
+		g2.setColor(Color.RED);
+		g2.drawString("This game is a prototype version!", 20, 20);
+		g2.drawString("No bugs // Erros will be fixed unless I get my intrest back to this project!", 20, 40);
+		g2.drawString("Author: Antritus (Antcoreservices@gmail.com) Discord: Pantteri#8909", 20, 60);
 		g2.setFont(arial_40);
 		g2.setColor(Color.white);
+
 	}
 	public void drawDialogScreen() {
 		int x = gp.getDefaultSettings().getTileSize()*2;
@@ -162,6 +168,7 @@ public class UISystem {
 			g2.drawString(dialogMessage, x - 50, y - 17);
 			y += 40;
 		}
+
 	}
 	public void drawMessage(Graphics2D g2) {
 		if (messageOn) {
